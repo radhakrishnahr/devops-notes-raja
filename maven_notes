@@ -1,0 +1,178 @@
+--> Maven is a powerful project management tool that is based on POM (project object model). It is used for projects build, dependency and documentation.
+--> It simplifies the build process like ANT. But it is too much advanced than ANT.
+--> Current version of Maven is 3.
+
+Understanding the problem without Maven:
+
+There are many problems that we face during the project development. They are discussed below:
+1) Adding set of Jars in each project: In case of struts, spring, hibernate frameworks, we need to add set of jar files in each project. It must include all the dependencies of jars also.
+2) Creating the right project structure: We must create the right project structure in servlet, struts etc, otherwise it will not be executed.
+3) Building and Deploying the project: We must have to build and deploy the project so that it may work.
+
+Maven simplifies the above mentioned problems. It does mainly following tasks.
+1. It makes a project easy to build
+2. It provides uniform build process (maven project can be shared by all the maven projects)
+3. It provides project information (log document, cross referenced sources, mailing list, dependency list, unit test reports etc.)
+4. It is easy to migrate for new features of Maven
+
+Apache Maven helps to manage :
+      Builds
+      Documentation
+      Reporing
+      SCMs
+      Releases
+      Distribution
+
+What is Build Tool ?
+
+A build tool takes care of everything for building a process. It does following:
+      Generates source code (if auto-generated code is used)
+      Generates documentation from source code
+      Compiles source code
+      Packages compiled code into JAR of ZIP file
+      Installs the packaged code in local repository, server repository, or central repository
+      
+      
+Maven VS ANT
+============
+ 
+Maven :
+1. Maven has a convention to place source code, compiled code etc. So we don't need to provide information about the project structure in pom.xml file.
+2. You need to provide order.	Maven is declarative, everything you define in the pom.xml file.
+3. There is life cycle in Maven.
+4. It is a framework.
+5. It is mainly a project management tool.
+6. The maven plugins are reusable.
+7. It is more preferred than Ant.
+
+Ant:
+1. Ant doesn't has formal conventions, so we need to provide information of the project structure in build.xml file.
+2. Ant is procedural, you need to provide information about what to do and when to do through code.
+3. There is no life cycle in Ant.	
+4. It is a tool box.
+5. It is mainly a build tool.
+6. The ant scripts are not reusable.
+7. It is less preferred than Maven.
+
+* A maven repository is a directory of packaged JAR file with pom.xml file. Maven searches for dependencies in the repositories. There are 3 types of maven repository:
+  1. Local Repository : Maven local repository is located in your local system. It is created by the maven when you run any maven command. Using setting.xml, we can update local repository location
+  <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"   
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">  
+  <!-- localRepository  
+   | The path to the local repository maven will use to store artifacts.  
+   |  
+   | Default: ${user.home}/.m2/repository  
+  <localRepository>/path/to/local/repo</localRepository>  
+  -->  
+  
+...  
+</settings>
+  2. Central Repository : Maven central repository is located on the web. It has been created by the apache maven community itself. http://repo1.maven.org/maven2/.
+  3. Remote Repository : Maven remote repository is located on the web. Most of libraries can be missing from the central repository such as JBoss library etc, so we need to define remote repository in pom.xml file.
+  <project xmlns="http://maven.apache.org/POM/4.0.0"   
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
+http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  
+  <modelVersion>4.0.0</modelVersion>  
+  
+  <groupId>com.javatpoint.application1</groupId>  
+  <artifactId>my-application1</artifactId>  
+  <version>1.0</version>  
+  <packaging>jar</packaging>  
+  
+  <name>Maven Quick Start Archetype</name>  
+  <url>http://maven.apache.org</url>  
+  
+  <dependencies>  
+    <dependency>  
+      <groupId>junit</groupId>  
+      <artifactId>junit</artifactId>  
+      <version>4.8.2</version>  
+      <scope>test</scope>  
+    </dependency>  
+  </dependencies>  
+  
+</project>  
+
+
+Maven Example : 
+===============
+Syntax:
+mvn archetype:generate -DgroupId=groupid -DartifactId=artifactid -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=booleanValue  
+
+Example :
+mvn archetype:generate -DgroupId=com.javatpoint -DartifactId=CubeGenerator -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
+
+Compile the Maven Java Project : mvn clean compile  
+
+*** The mvn package command completes the build life cycle of the maven project such as:
+                                              1.  validate
+                                              2.  compile
+                                              3.  test
+                                              4.  package
+                                              5.  integration-test
+                                              6.  verify
+                                              7.  install
+                                              8.  deploy
+
+Maven Plugins :
+---------------
+
+The maven plugins are central part of maven framework, it is used to perform specific goal.
+
+According to Apache Maven, there are 2 types of maven plugins.
+                                                               1. Build Plugins
+                                                               2. Reporting Plugins
+
+Build Plugins
+These plugins are executed at the time of build. These plugins should be declared inside the <build> element.
+
+Reporting Plugins
+These plugins are executed at the time of site generation. These plugins should be declared inside the <reporting> element.
+
+Maven Core Plugins :
+--------------------
+
+clean	: clean up after build.
+compiler : compiles java source code.
+deploy : deploys the artifact to the remote repository.
+failsafe :runs the JUnit integration tests in an isolated classloader.
+install :	installs the built artifact into the local repository.
+resources :	copies the resources to the output directory for including in the JAR.
+site :	generates a site for the current project.
+surefire :	runs the JUnit unit tests in an isolated classloader.
+verifier :	verifies the existence of certain conditions. It is useful for integration tests.
+
+List of Maven Plugins :
+-----------------------
+
+https://repo.maven.apache.org/maven2/org/apache/maven/plugins/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
