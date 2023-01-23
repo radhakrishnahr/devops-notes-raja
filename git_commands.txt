@@ -22,3 +22,271 @@ This commit command is uses to commit our code with valid message.
 >git commit -amend
 The amend option lets us to edit the last commit.
 If accidentally, we have committed a wrong commit message, then this feature is a savage option for us. 
+
+git clone:
+----------
+
+The git clone is a command-line utility which is used to make a local copy of a remote repository. It accesses the repository through a remote URL.
+The remote repository URL is referred to the origin.
+
+git clone <repository URL>  
+git clone -b <Branch name><Repository URL>  
+
+git stash :
+-----------
+
+Used to switch from one branch to another branch without commit the incompleted work of current branch
+
+git stash
+git stash save "<Stashing Message>" 
+git stash list  
+git stash apply
+git stash apply <stash index id> 
+git stash show
+git stash show -p 
+git stash pop  [The git stash pop command is quite similar to git stash apply. The main difference between both of these commands is stash pop command that deletes the stash from the stack after it is applied.]
+git stash drop (Unstash)
+git stash clear  
+
+.gitignore file : used to store unwanted file names which ignores while commiting new changes.
+-----------------
+
+Global .gitignore: As we know that we can create multiple .gitignore files for a project. But Git also allows us to create a universal .gitignore file that can be used for the whole project. This file is known as a global .gitignore file. To create a global .gitignore, run the below command on terminal:
+
+git config --global core.excludesfile ~/.gitignore_global  
+
+How to List the Ignored Files?
+
+git ls-files -ignore --exclude-standard 
+
+git fork vs git clone :
+-----------------------
+
+Getting a Git Repository :
+--------------------------
+There are two ways to obtain a repository. They are as follows:
+
+Create a local repository and make it as Git repository. --> git init, git add . git commit -m "message"
+Clone a remote repository (already exists on a server). --> git clone -b branchname <git-url>
+
+Git indexing area ( staging area ) : files which are added by executing git add . command
+------------------------------------
+
+Git HEAD : 
+----------
+The HEAD points out the last commit in the current checkout branch. It is like a pointer to any reference. The HEAD can be understood as the "current branch." When you switch branches with 'checkout,' the HEAD is transferred to the new branch.
+
+git show HEAD ---> to check the status of HEAD
+
+Git Origin Master : refers the remote repository main branch.
+-------------------
+
+Git Remote :
+------------
+
+To check the configuration of the remote server, run the git remote command.
+Git remote supports a specific option -v to show the URLs that Git has stored as a short name. These short names are used during the reading and write operation. Here, -v stands for verbose. We can use --verbose in place of -v. It is used as:
+git remote --verbose  
+git remote add <short name> <remote URL>  
+git remote remove <dest>
+git remote rename <oldname> <newname>
+git remote show <remote> 
+git remote set-url <remote name><newURL>  
+git fetch <remote>
+git pull <remote>
+git push <remote>
+git clone <remote>
+
+Git Tags :
+----------
+There are two types of tags.
+    Annotated tag : git tag <tag name> -m "< Tag message>  
+    Light-weighted tag : git tag <tag name>  
+Both of these tags are similar, but they are different in case of the amount of Metadata stores.
+
+to create tag, git tag <tag name>
+to list the tag :
+      git tag
+      git show
+      git tag -l ".*"
+to remove the tag : git tag --delete <tagname>  
+to remove remote tag :  git push origin --delete <tag name>  
+
+Upstream/Downstream :
+---------------------
+
+->  To push the changes and set the remote branch as default, run the below command:
+
+$ git push --set-upstream origin master  or git branch --set-upstream origin master  [ To display default remote branches : git branch -vv ]
+
+Git checkout : used to change branch
+------------------------------------
+
+to create and change new branch :
+git branch new
+git checkout new
+or
+using one command we can create and change to the new branch : git checkout -b new
+
+to checkout remote branch :
+
+git fetch --all
+git checkout <remotebranch> 
+
+To revert the changes : 
+-----------------------
+
+git revert <commit-ish>  
+git revert --edit <commit-ish> --> will open text editor to modify changes
+git revert -n <commit-ish>  ---> no edit option will not open editor, directly reverts the last commit
+
+Git Reset : 
+----------
+The git reset command has three core forms of invocation. These forms are as follows.
+  Soft
+  Mixed
+  Hard
+->  git reset --hard   --> uses to undo files from staging area and will update the working directory to match the Staging Area. (to unstage the files)
+->  git reset --mixed  --> It will update the Staging Area with the content that the HEAD is pointing to. But, not affected on Working directory
+->  git reset --soft  <commit-id>  -->  it resets(refs pointers) the Head as all options do. but not updates staging and working areas.
+
+git rm : It is used to remove file form staging area --> git rm --cached <file name> 
+--------
+
+Git Cherry-pick :
+=================
+Cherry-picking in Git stands for applying some commit from one branch into another branch. In case you made a mistake and committed a change into the wrong branch, but do not want to merge the whole branch. You can revert the commit and apply it on another branch.
+
+git cherry-pick <commit id>  
+
+Git Log : to check commit history
+---------
+
+git log
+git log --oneline
+git log --stat  ( used to display modified files )
+git log --patch ( used to display modified files )
+git log --graph --oneline
+git log -3
+git log --after="yy-mm-dd"
+git log --after="21 days ago"
+git log --after="2019-11-01" --before="2019-11-08 "
+git log --author="Author name"
+git log -author="@gmail.com"
+git log --grep=" Commit message."
+
+Git Diff : 
+1. Track the changes that have not been staged. --> git diff
+2. Track the changes that have staged but not committed. --> git diff --staged
+3. Track the changes after committing a file. --> git diff HEAD
+4. Track the changes between two commits. --> git diff <commit1-sha> <commit2-sha>
+5. Track the changes between two branches. -->  git diff <branch 1> < branch 2> 
+
+Git Status : git status command is used to trace changes in stagig area.
+
+Git Branch :
+create : git branch <new-branch-name>
+list : git branch --list
+delete : git branch -d <branch-name> 
+to delete remote branch : git push origin -delete <branch name>
+to checkout the branch : git checkout<branch name>  
+Switch to master branch :  git branch -m master
+Rename the branch : git branch -m <old branch name> <new branch name>  
+to merge the branch with current branch : git merge <branch name>
+to merge the specific commit to current branch : git merge <commit-id>
+*** To resolve the git conflicts : git mergetool [ open conflicts in text editor, we can update the file directly. To accept the changes, git rebase --continue ]
+
+*** merge vs rebase :
+
+Git Merge :
+1. Merging creates a final commit at merging.
+2. It merges all commits as a single commit.	
+3. It creates a graphical history that might be a bit complex to understand.	
+4. It is safe to merge two branches.	
+5. Merging can be performed on both public and private branches.
+6. Merging integrates the content of the feature branch with the master branch. So, the master branch is changed, and feature branch history remains consistence.	
+7. Merging preserves history.	
+8. Git merge presents all conflicts at once.	
+
+Git Rebase :
+1. Git rebase does not create any commit at rebasing.
+2. It creates a linear track of commits.
+3. It creates a linear history that can be easily understood.
+4. Git "rebase" deals with the severe operation.
+5. It is the wrong choice to use rebasing on public branches.
+6. Rebasing of the master branch may affect the feature branch.
+7. Rebasing rewrites history.
+8. Git rebase presents conflicts one by one.
+
+Git Rebase : 
+------------
+
+git rebase <branch name> 
+git rebase --continue  
+git rebase --skip  
+git rebase -i  (interactive)
+
+Git Squash :
+------------
+
+The squash is an excellent technique for group-specific changes before forwarding them to others. You can merge several commits into a single commit with the compelling interactive rebase command.
+
+To squash the commits in to one commit :
+----------------------------------------
+
+git log --oneline  
+git rebase -i HEAD ~3 ---> In your editor, update the commits 
+git push origin master
+
+Git Fetch :
+-----------
+
+git fetch <repo-url>
+git fetch <repo-url> <repo-branch>
+git fetch --all
+git fetch origin --> to sync local repository
+
+***git pull = git fetch + git merge  
+
+Git Pull :
+----------
+
+git pull
+git pull <remote-branch>
+git pull origin master
+
+
+Git Push :
+----------
+
+git push
+git push origin master
+git push <remote><branch> --force  
+git push <remote><branch> --force-with-lease   
+git push --verbose  
+git push origin --delete <branchname>  --> we can delete remote branch using git push command
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
