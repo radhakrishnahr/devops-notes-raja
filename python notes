@@ -1,0 +1,2304 @@
+python : von guido rossum  ->
+
+class HelloWorld{
+	pubic static void main(String args[]){
+		int a=10;
+		int b=20;
+		int c=a+b;
+		System.out.println("sum is : " c);
+	}
+}
+
+a,b=10,20
+print("sum is : " (a+b))
+
+1. simple and easy to learn
+2. case sensitive
+3. freeware and opensource  --> Jython (python and java)
+4. high level
+5. platform independent or architectural nuetral or portable
+6. dynamically typed language
+7. oops language
+8. interpreted language --> shell scripting, groovy scripting
+9. robust --> extensible libraries
+10. embedded
+
+=========================================
+
+pycharm, intellijidea, vistudio, atom  --> IDE's 
+
+==============================================
+Identifiers : class, object, function
+
+naming convensions : a-z, A-Z, 0-9 and _
+
+_name  --> private identifier
+__name ---> strongly private identifier
+__name__  --> language specific identifier
+=====================================================
+Reserved words in python : 33
+if else elif for while True False None and or not is break continue, case, return, try, except, in, yield, finally, raise, assert
+import from as class def pass global nonlocal lambda del with
+====================================================================
+Data types : python is dynamically typed language. no need to define data type explicitly
+
+implicit data types : 14
+=========================
+int float complex bool str bytes bytearray range list tuple set frozenset dict None
+====================================================================================
+
+int : integer values, default numbering system is decimal numbering system
+float : fractional numbers
+complex : stores both real and imaginary values. eg: 2+3j
+bool : True, False
+str : > no char type
+      >  using '', ""
+	  > multiline strings are defined by ''' ''', """ """
+	  > using slice operator, we can perform string operations easily
+	  > string-name[begin:end:step]
+type concersion: type casting  or type coersion (convert one type to another type )
+=====================================================================================
+defacult type conversion functions in python are : int(), float(), complex(), str() and bool()
+> int(), float() : convert from any type to int,float except complex
+> complex() : convert from any type to complex except string
+> bool() : convert any type to boolean including complex
+String formatting : 
+===================
+> using repition operator '{}'
+
+
+bytes and bytearray datatype : range is 0 to 255, used for to process image or video file in DIP applications
+===============================
+> bytes is immutable
+> bytearray is mutable
+ex : x=[10,20,30]
+	 y=bytes[x]
+	 b[0]=100 --> not allowed to insert
+	 z=byetarray[x]
+	 b[0]=100 --> allowed to insert
+
+***list data type :
+===================
+To represent group of objects as a single entity, where insertion order required to preserve and duplicates are allowed
+> list defination, l=[]
+> scalable / growable
+> mutable
+> insertion order is preserved
+> duplicates are allowed
+> slicing is possible
+> both homogeneous and heterogenious objects are allowed
+> ex : l=[1,2.3,"Ram"]
+
+tuple : similar to list except immutability
+============================================
+> tuple defination : t=()
+> read only version of list
+> slicing is possible
+> not scalable
+> ex : t=(10,20,30)
+
+set : 
+=====
+> set defination, *** s=set() / s={} --> not allowed ***
+> elements are enclosed in {}
+> group of objects as a single entity
+> duplicates are not allowed
+> insertion order is not preserved
+> slicing is not possible
+> Scalable
+> Mutable
+> both homogeneous and heterogenious objects are allowed
+> ex : s={10,20,30}
+
+frozenset : similar to set except immutability
+==============================================
+> ex: s={10,20,30}
+	  fs=frozenset(s)
+	  fs.add(40) --> not applicable for frozenset
+
+*** dictionary : used to store key and value pairs
+===================================================
+> Mutable
+> order is not preserved
+> no slicing feature
+> dict defination, d={}
+> ex : d={ 1: 'apple', 2: 'orange'}
+
+range() :
+=========
+> elements in range type is immutable
+> slicing is allowed
+> ex : r=range(10)
+       print(type(r))
+> ex:   r=range(10)
+		for i in r[2:8]:
+			print(i)
+> ex: for i in range(0,101,5):
+		print(i)
+		
+None : No datatype, not pointing to any object
+==============================================
+> ex : def m1():
+		  a=10
+		  print("Hello")
+	   f1()
+	   print(f1())
+	   
+Escape characters :
+===================
+\n, \t, \r, \b, \f --> formfeed, \v --> vertical tab
+\' -> single quote
+\" -> double quote
+\\ -> back slash
+ex : s= 'the book \'python\' is very easy'
+
+constants :
+===========
+> recommended to define constants using uppercase letters
+> ex : MAX_VALUE=10
+
+Operators :
+===========
+> arthmatic, relational or comparision, logical, bitwise, assignement operators, special operators
+
+arithmatic operators : +,-,*,/,%,//,**   
++ -> addition and concatanation
+* -> multiplication and repetition
+x/0,x//0,x%0 -> zero division error
+
+relational operators : >, >=, <, <=
+
+Equality operators : ==, !=
+*** == is compares content
+*** 'is' operator compares reference id
+
+*** difference between '==' and 'is' operator ***
+
+Logical operators : and, or, not
+and : if x is False then returns x otherwise it returns y (True)
+
+or : if x is True then it returns True otherwise returns y (False) 
+
+not : complement operation
+
+Bitwise operators : &,|,^,~ (perform actions on only int and boolean values)
+
+Shift operators : <<,>>,>>>
+
+Assignement operators : +=,-=,*=,/=,%=, //=, **= (compound assignement operarors)
+&=,|=,^=,>>=,<<=
+
+Special operators :
+***1. identity operators : is, is not
+ ex : l1=["One","Two","Three"]
+	  l2=["One","Two","Three"]
+	  print(l1 is l2)
+	  print(l1 == l2)
+	  print(l1 is not l2)
+
+2. Membership operators : in, not in
+ex ;
+str1="leanring python is easy"
+print('z' in str1)
+print('easy' in str1)
+print('d' not in str1)
+
+***3. Ternary operator : reduces code
+syntax : x=a if condition else b
+
+
+ex : x=4 if 10>20 else 5
+
+***WAP to read 2 numbers from the key board and print minimum value :
+
+a=int(input("Enter 1st number : "))
+b=int(input("Enter 1st number : "))
+if a<b:		| min=a if a<b else b	| print(a if a<b else b)	
+  print(a)	| print(min)			|
+else 		|						|
+  print(b)	|						|
+*** Nested of ternary operator is possible :
+ex : 
+a,b,c=10,20,30
+x=a if a<b and a<c else b if b<c else c
+ex :
+a=int(input("Enter 1st number : "))
+b=int(input("Enter 1st number : "))
+print("a is greter than b" if a>b else "a is lessthan b" if a<b else "both are equal")
+
+Operator precedence : priority operation 
+1 -> ()
+2 -> **
+3 -> ~,- (unary minus)
+4 -> *,/,%,//
+5 -> +,-
+6 -> <<,>>,&,^,|,>,<,>=,<=,==,!=
+7 -> =, +=, -=
+8 -> is, is not, in, not in, not, and , or
+ex : print((a+b)*c/d)
+
+module : it is a group of vars,functions,classes
+===================================================
+
+group of modules -> packages
+group of packages -> library
+
+www.python.org
+
+***math module : performs mathematical operations
+
+> using import keyword we can use math module
+ex : 
+import math
+print(math.sqrt(4))
+print(math.pi)
+> we can create alias for any module
+ex:
+import math as m
+print(m.sqrt(4))
+print(m.pi)
+> use specific functions from madule
+ex:
+from math import * | sqrt,pi
+print(sqrt(4))
+print(pi)
+> we can create aliases for methods in modules
+ex:
+from math import sqrt as a, pi as b
+print(a(4))
+print(b)
+
+important functions in math module :
+
+sqrt(), ceil(), floor(), pow(), factorial(), trunc(), gcd(), sin(), cos(), tan(), ...
+
+*** WAp to read radius of circle from the keyboard and print its area :
+
+from math import pi
+r=int(input("enter radius: "))
+print("area is : ", pi*r**2)
+
+Input and Output statements :
+=============================
+
+** How to read input dynamically from the keyboard
+for python2, 1. raw-input() and 2. input()
+** It reads only string type.
+** Typecasting is required while reading input from keyboard.
+for python 3, only input() is available
+Ex:
+name=input('Enter name : ')
+mobile=int(input('Enter your mobile number : '))
+height=float(input("Enter your height : '))
+martialstatus=eval(input('Enter martial status [True/False] : '))
+print('You entered : ', name)
+print('Your mobile number is : ', mobile)
+print('Your height in feets and inches : ', height)
+print('Your martial status is : ',martialstatus)
+
+***How to read multiple values from keyboard in a single line : (List comprehension)***
+----------------------------------------------------------------------------------------
+print(input("Enter 2 numbers : "))  ---> "10 20" string type
+print(input("Enter 2 numbers : ").split()) --> [ '10','20'] --> list of strings
+print([int(x) for x in input("Enter 2 numbers : ").split()]) -->  list of integers
+
+Ex: Add two numbers from keyboard
+a,b=[int(x) for x in input("Enter 2 numbers : ").split(',')]
+print('Sum is : ',a+b)
+
+*** eval() : converts string to corresponding datatype
+======================================================
+
+ex:
+x=eval("10+20+30")
+print(x)
+ex:
+x=eval(input("Enter any expression : "))   --> 10+20*30/4 or Raja*3
+print(x)
+
+*** command line arguments :
+============================
+
+-> We can use 'argv' to use commandline arguments
+-> argv -> is list type will be avaialble in 'sys' module
+ex:
+from sys import argv
+print(type(argv))
+print("no.of commandline arguments: ", len(argv))
+print("The list of commandline arguments: ",argv)
+print("commandline arguments one by one: ")
+for i in argv:
+  print(i)
+  
+Run : py test.py 10 20 30
+-------------------------
+
+ex:
+from sys import argv
+sum=0
+args=argv[1:]
+for i in args:
+  n=int(i)
+  sum=sum+i
+print("The sum is : ",sum)
+
+ex:
+from sys import argv
+args=argv[1]
+print(args)
+print(argv[1]+argv[2])  # test with string args
+print(2*argv[1])
+print(int(argv[1])+int(argv[2]))  # test with int args
+print(argv[100])  # will get index out of range error
+
+output statements :
+===================
+print() :
+--------
+> normal blank print method is print()
+> we can use escape characters (\n,\t ...)
+> we can  use +(concatanation) and *(repetition) operators
+> We can pass with variable no.of args :
+	ex: a,b,c,d=10,2,3,4
+	    print("The result is : ", a,b,c,d)
+		print("The result is : ", a,b,c,d,sep=',')  -> using sep attribute
+		print("The result is : ", a,b,c,d,sep=':')
+		print(a, end='   ') -> using end attribute, useful while creating puzzles
+		print(b, end='  ')
+		print(c, end=' ')
+		print(d)
+> We can used print objects : l=[10,20]
+							  print(l)
+> We can print string and variable list :
+	str1="Raja"
+	age=29
+	print("Hello, ", str1, "Your age is ",age)
+> We can use with formatted string : (%i,%d -> int %f -> float %s -> string )
+a,b,c=10,20,30
+print("a value is %d", %a)
+print("b value is %d and c value is %d", %(b,c))
+> We can use replacement operator :
+ex:
+name='Raja'
+salary=50
+country='India'
+print("Hello {} your salary is {} you are from {}".format(name,salary,country))
+print("Hello {0} your salary is {1} you are from {2}".format(name,salary,country))
+print("Hello {a} your salary is {b} you are from {c}".format(a=name,b=salary,c=country))
+
+flow control :
+==============
+Selection statements : if, if-else, if-elif-else
+Iterative statements : for, while
+Transfer statements : break, continue, pass and return
+Note : no switch and dowhile
+
+Selection statements :
+-----------------------
+if :
+	if <condition>:
+		statements
+if-else :
+	if <condition>:
+		statements
+	else
+	    default statements
+if-elif-else : replacement of switch
+	if <condition>:
+		statements
+	elif <condition>
+		statements
+	elif <condition>
+		statements
+		.
+		.
+		.
+	else
+	    default statements
+
+Ex :
+book=input('Enter your favourite book : ')
+if book=='python':
+	print("Your favourite book is %s",%book)
+elif book=='java':
+	print("Your favourite book is %s",%book)
+else
+	print("Your favourite book is DevOps")
+	
+Ex: Largest num of three numbers
+
+n1=int(input("enter first number : ")
+n2=int(input("enter second number : ")
+n3=int(input("enter third number : ")
+if n1>n2 and n1>n3:
+	print(n1,"is greter than",n2,"and",n3)
+elif n2>n3:
+	print(n2,"is greter than",n1,"and",n3)
+else
+	print(n3,"is greter than",n1,"and",n2)
+	
+using list comprehension and ternary operator :
+-----------------------------------------------
+
+n1,n2,n3=[int(x) for x in input("Enter three numbers : ").split()]
+print(n1 if n1>n2 and n1>n3 else n2 if n2>n3 else n3)
+
+Ex: to read single digit number from the keyboard and print its value in english words
+
+n=int(input("Enter any number between 0 to 9 : ")
+if n==0:
+	print("Zero")
+elif n==1:
+	print("One")
+	.
+	.
+	.
+else 
+	print("Enter numbers between 0 to 9 only")
+
+Iterative statements : for and while loops
+==========================================
+
+for loop :
+----------
+for i in <iterable item> or <string>:
+	statements
+	
+Ex:
+for i in [10,20,30]:
+	print(i)
+	
+for i in "This is python programming language":
+	print(i)
+	
+Ex:
+
+s=input("Enter any string : ")
+i=0
+for x in s:
+	print("The character at {} index is : {}".format(i,x))
+	i+=1
+
+Ex:
+
+for x in range(10):
+	print(x)
+	
+# asending order
+for x in range(1,11):
+	print(x)
+	
+# odd numbers	
+for x in range(1,11,2):
+	print(x)
+	
+# even numbers	
+for x in range(0,11,2):
+	print(x)
+	
+# decending order`	
+for x in range(11,1,-1):
+	print(x)
+
+# add list of numbers from the keyboard
+list=(input("Enter any list of numbers : ").split())
+sum=0
+for i in list:
+    x=int(i)
+    sum+=x
+print("Sum of given list of numbers are {}".format(sum))
+
+while loop :
+============
+while <condition>:  --> as long as condition is true, its body repetedly executes
+	<body>
+	
+Ex:
+x=1
+while x<=10:
+	print(x)
+	x+=1
+	
+Ex: Sum of first n numbers
+n=int("Enter any number : ")
+x=1
+sum=0
+while x<=n:    | while x in range(n+1)
+	sum+=x
+	x+=1
+print(sum)
+
+Ex: prompt user to enter some same until entering your name
+
+name=''
+while name!='Raja':
+	name=input('Enter name : ')
+print('Thank you for your confirmation')
+
+Ex: infinite loops
+
+i=0
+while True:
+	print("Hello; ",i)
+	i+=1
+	
+Nested loops :
+==============
+Ex:
+
+for i in range(4):
+	for j in range(4):
+		print("i={} and j={}".format(i,j))
+
+Ex:
+
+n=int(input("Enter the no.of rows: "))
+for i in range(n):
+	for j in range(n):
+		print('*',end='')
+		print()
+# using single for loop
+for i in range(n):
+	print('* '*n)
+	
+Ex:
+
+n=int(input("Enter the no.of rows: "))
+for i in range(1,n+1):
+	for j in range(n):
+		print(i,end=' ')
+	print()
+	
+Ex: right angle triangle pattern
+
+n=int(input("Enter the no.of rows: "))
+for i in range(1,n+1):
+	print('* '*i)
+
+Ex: equilateral triangle pattern
+
+n=int(input("Enter the no.of rows: "))
+for i in range(1,n+1):
+    print(' '*(n-i), end=' ')
+    print('* '*i)
+Transfer statements :
+=====================
+
+1. break : to break/stop execution in side the loop execution/iteration
+=======================================================================
+
+Ex: 
+for i in range(10):
+	if i==3:
+		print("Thank you")
+		break
+	print(i)
+print("end of loop")
+
+Ex:
+cart=[10,200,300,500,1000]
+for i in cart:
+	if i>300:
+		print("Thank you for shopping")
+		break
+	print("placed",i)
+	
+2. continue : To skip current iteration and to continue next iteration we use continue statement
+=============
+
+Ex:
+
+for i in range(10):
+	if i%2==0:
+		continue
+	print(i)
+	
+Ex:
+
+cart=[10,200,300,500,1000]
+for i in cart:
+	if i>300:
+		print("Thank you for shopping")
+		continue
+	print("placed",i)
+	
+Ex:
+
+num=[10,200,0,500,0]
+for i in num:
+	if i==0:
+		print("Avoid zero division error")
+		continue
+	print("100/{}={}".format(i,100/i))
+
+Ex: loops with else block
+
+# if for loop without break executed then else block will be executed
+cart=[10,20,30,40]
+for i in cart:
+	if i>300:
+		print("Thank you for shopping")
+		break
+	print("placed",i)
+else:
+    print("All items are placed successfully")
+	
+pass statement:
+==============
+> if we want pass empty task without error, we should use 'pass' statement
+
+Ex:
+if True: pass
+print('passed')
+
+class Student:
+    pass
+
+class Person:
+    def read():
+        pass
+
+class Teacher:
+    def read(self):
+        print('python'+'java')
+
+def m1(): pass
+
+for i in range(100):
+    if i%9==0:
+        print(i)
+    else: pass
+	
+del keyword:
+============
+
+> After using a variable. If that variable is no longer used, then we can destroy that variable using 'del' keyword
+
+Ex:
+
+x=10
+print(x)
+del x
+print(x)
+	
+*** difference between None and del : 
+
+None : s=None -> then s will not point to any object
+del: s='xyz'
+	 del s  -> then 's' variable and object will be deleted
+	
+*** String data type :
+======================
+> string objects are immutable
+> '', "", ''' ''', """ """
+> index
+> slicing
+> concatanation(+) and repetition (*)
+> membership operators (in, not in)
+> comparision operators (<,<=,>,>=,==,!=)
+> string formating using replacement operators ({}) with format() and using formatted string (%i or %d for int, %f for float, %s for string)
+> built-in functions : 
+	len() -> to get length of string
+	find() -> to check substring is avaialble or not. returns 1st occurance of string index of substring. returns -1 if substring is not avaialble
+		ex: s="learning python is easy"
+			print(s.find('python'))
+	rfind() -> searches 1st occurance of substring in reverse direction
+	find(substring,begin,end)  -> searches given substring in specified begin and end-1 index
+	index() -> same as find() except if substring is not available it returns "ValueError"
+	count(substring) and count(substring,begin,end) -> counting substrings in the given string
+	replace(oldstring,newstring) -> ***by creating new string objects we can replace old string with new string 
+	***split(delimeter) -> we can split string using delimeter (space, ',','/',':'...). converting from string to substrings. returns list type object
+		Ex: s='30/12/1981'
+			print(s.split('/')
+	***join() -> used to join group of substrings with a separator. Syntax : string=separator.join(group-of-substrings)
+		Ex: l=['30','December','1981']
+			print('/'.join(l))
+	upper() -> used to convert string in to uppercase letters
+	lower() -> used to convert string in to lowercase letters
+	swapcase() -> L->U and U->L
+	title() -> first letters are capital
+	capitalize() -> Only first letter is capital
+	startswith(substring) -> returns True if string is starts with substring
+	endswith(substring) -> returns True if string is ends with substring	
+	isalnum() -> returns True is alpha numeric character is found in the string
+	isalpha() -> returns True is alphabetic character is found in the string
+	isdigit() -> returns True is numeric character is found in the string
+	islower()  -> True if lower
+	isupper()  -> True if upper
+	istitle()  -> True if tiltle characters
+	isspace()  -> True if spaces
+
+Important programs for to perform string operations :
+=====================================================
+
+1. To reverse given string :
+
+# using slicing
+s=input("Enter your name : ")
+print(s[::-1])
+# without slicing
+s=input("Enter your name : ")
+i=len(s)-1
+rev_s=''
+while i>=0:
+    rev_s+=s[i]
+    i=i-1
+print(rev_s)
+# using for loop 
+s=input("Enter your name : ")
+i=len(s)-1
+rev_s=''
+for i in range(i,-1,-1):
+    rev_s+=s[i]
+print(rev_s)
+
+2. To reverse order of words :
+
+s=input("Enter your name : ")
+l=s.split()
+print(l)
+l1=[]
+i=len(l)-1
+while i>=0:
+    l1.append(l[i])
+    i=i-1
+print(l1)
+output=' '.join(l1)
+print(output)
+
+3. To reverse internal content of each words
+
+s=input("Enter your name : ")
+l=s.split()
+l1=[]
+for i in range(len(l)):    # for i in l:
+    s1=l[i]				   # 	l1.append(s1[::-1])
+    l1.append(s1[::-1])	   # output=' '.join(l1)
+print(l1)				   # print(output)
+output=' '.join(l1)
+print(output)
+
+4. Write program ro print characters in odd position and even positions
+
+#using slicing
+s=input("Enter String : ")
+print("char's in even position : ", s[0::2])
+print("char's in odd position : :, s[1::2])
+#without slicing
+i=0
+print("chars in even position are : ")
+while i<len(s):
+	print(s[i], end=',')
+	i+=2
+print()
+print("chars in odd position are : ")
+i=1
+while i<len(s):
+	print(s[i], end=',')
+	i+=2
+	
+5. Merging chars of two strings in to a single string by taking characters alternatively
+
+s1=input("Enter string 1 : ")
+s2=input("Enter String 2 : ")
+output=''
+i,j=0,0
+while i<len(s1) or j<len(s2):
+    output=output+s1[i]
+    i+=1
+    output+=s2[j]
+    j+=1
+print(output)
+
+6. i/p: B4A1D3  o/p: ABD134
+
+s=input("Enter string 1 : ")
+s1=s2=output=''
+for x in s:
+    if x.isalpha():
+        s1=s1+x
+    else:
+        s2=s2+x
+print(''.join([s1,s2]))
+print(s1+s2)
+print(''.join(sorted(s1))+''.join(sorted(s2)))
+
+7. i/p: a1b2c3  o/p: abbccc
+
+s=input("Enter string 1 : ")
+output=''
+for x in s:
+    if x.isalpha():
+        output=output+x
+        previous=x
+    else:
+        output=output+previous*(int(x)-1)
+print(output)
+
+8. i/p: a4k3b2  o/p:aeknbd
+
+s=input("Enter string 1 : ")
+output=''
+for x in s:
+    if x.isalpha():
+        output=output+x
+        previous=x
+    else:
+        ## for to understand, i/p=a4k3b2 expectedd o/p=aeknbd
+        ## ord(char) returns unicode while chr(unicode) returns char
+        output=output+chr(ord(previous)+int(x)) ## a=a+chr(97+4) => ae...
+print(output)
+
+9. i/p=ABCABCAAABCAD O/P=ABCD
+
+s=input("Enter string : ")
+output=''
+for x in s:
+    if x not in output:
+        output+=x
+print(output)
+
+10. i/p= ABAAABBCCDAABBBBCCCCCCCCDDDDDDDDDDDDDDDD o/p= A->6 B->7 C->10 D->17
+
+s=input("Enter string : ")
+d={}
+for x in s:
+    if x in d.keys():
+        d[x]+=1
+    else:
+        d[x]=1
+print(d)
+for k,v in d.items():
+    print('{}={} times'.format(k,v))
+
+list data type :
+===============
+> Group of elements as a single entity where insertion order is preserved and duplicates are allowed
+> Mutable
+> Scalable
+> homogeneous and heterogenious objects are allowed
+> slicing is applicable
+
+list creation :
+---------------
+> l=[]
+> dynamically creating list : l=eval(input("Enter list : "))
+> list(sequence) -> used to create list with that sequence. l=list('Raja') -> l=['R','a','j','a'] or list(range(4)) or list(range(5,21)), list(range(5,101,5))
+> spilt() converts ctring in to list Ex: s=input('Enter string: ')  l=s.split() print(l) print(type(l))
+> list inside another list is called nested list. Ex: l=[1,2,[1,2,3]]
+
+Accessing elements of the list :
+--------------------------------
+
+> two ways : (1) Using index and (2) Using slicing
+
+Ex: 
+l=[1,2,[1,2,3]]
+print(l[1]) #2
+print(l[2][2]) #2
+
+Ex: 
+l=[1,2,3]
+i=0
+while i<len(l):
+	print(l[i])
+	i+=1
+or
+l=[1,2,3]
+for i in l:
+	print(i)
+
+Ex : 
+
+l=[0,1,2,3,4,5,6,7,8,9]
+for i in l:
+	# print even numbers
+	if i%2==0:
+		print(i)
+	# print odd numbers
+	if i%2==1:
+		print(i)
+
+Ex:
+
+l=['A','B','C','D','E','F','G','H','I']
+i=0
+n=len(l)
+for i in range(n):
+	print('{} is avaialbleat positive index: {} and at negative index: {}'.format(l[i],i,i-n))	
+
+Important functions of list:
+----------------------------
+1. len() : returns length of given list, eg: n=len(l)
+2. count() : returns no of occurances of each element in the list, eg: print(l.count('A'))
+3. index() : returns 1st occurance of specified element. If it is not found, returns 'ValueError', eg : print(l.index('A'))
+4. append() : To add an element to the list, eg : l=[]; l.append('Raja')
+Ex :
+l=[]
+for i in range(101):
+	if i%10==0:
+		l.append(i)
+print(l)
+
+5. insert() : Insert element in the list at specified index
+Ex:
+l=[1,2,3]
+l.insert(1,4)
+print(l)
+
+6. extend() : adding all elemenets of one list to the another list
+Ex:
+l1=[1,2,3]
+l2=[4,5,6]
+l1.extend(l2)
+print(l1)
+
+7. remove() : Uses to remove specific item from the list. Always removes first occurance, if an element presented multiple times in the list.
+Ex:
+l=[1,2,3,1]
+l.remove(1)
+print(l) # If specified value is not avaialble then it will get "Value Error".
+
+8. pop() : Uses to remove last element from the list and returns that element.
+Ex: 
+l=[1,2,3,4]
+print(l.pop())
+print(l)
+
+9. del() : uses to delete the list.
+Ex:
+l=[1,2,3]
+del(l)
+print(l)
+
+10. reverse() : To display elements of the list in reverse order.
+Ex:
+l=[1,2,3,4]
+l.reverse()
+print(l)
+
+11. sort() : To sort all elements in a list. If we want to use sort() we must use homogeneous elements
+Ex :
+l=[1,4,2,3]
+l.sort()
+print(l)
+l.sort(reverse=True)
+print(l)
+
+Aliasing and cloning of the list object :
+-----------------------------------------
+
+> Creating duplicate reference is called as Aliasing. Aliasing is also called as "Shallow copy (create duplicate)" If we change anything in duplicate variables. The original list get affected
+  To avoid this problem. we can clone original list using 1. slice operator and 2. using copy() method.
+Ex:
+x=[1,2,3]
+y=x # Aliasing
+print(id(x))
+print(id(y))
+y.insert(1,5)
+print(x)
+
+Clone : Creating another object which will not affect on original list. It is also called as "deep copy"
+Ex:
+#cloning using slice operator :
+x=[1,2,3,4]
+y=x[::]
+y[1]=300
+print(x)
+print(y)
+# cloning using copy() method
+y=x.copy()
+y[1]=300
+print(x)
+print(y)
+
+*** Difference between x=y and x=y.copy()
+> x=y : duplicate reference is created
+> x=y.copy() : duplicate object is created
+
+Mathematical operators for list objects :
+------------------------------------------
+
+> '+' (concatnation operator) is work like extend()
+> '*' (repetition operator) : Ex : x=[1,2,3];y=x*3;print(y)
+
+Comparing list obejcts : 
+------------------------
+
+> To compare lists, The no of elements should be same , Order of the elements should be same and the content of the elemenetsshould be same.
+Ex:
+l1=['A','B'];l2=['B','A'];l3=['A'];l4=['a','b'];l5=['A','B']
+print(l1==l2)
+print(l1==l3)
+print(l1==l4)
+print(l1==l5)
+print(l1>l3)
+print(l3<l1)
+
+Membership operators in list :
+------------------------------
+Ex:
+l=[10,20,30,40]
+print(10 in l)
+print(100 in l)
+print(100 not in l)
+
+To remove all elements we can call clear() function : 
+Ex:
+l1=[1,2,3]
+print(l1)
+l1.clear()
+print(l1)
+
+Nested lists :
+--------------
+Nested list as matrix :
+Ex :
+x=[[1,2,3],[4,5,6],[7,8,9]]
+print(x)
+print('row wise: ')
+for x1 in x:
+	print(x1)
+print('Elements in matrix format : ')
+for i in range(len(x)):
+	for j in range(len(x[i])):
+		print(x[i][j], end=' ')
+		#print(i,j,end=' ')
+	print()
+
+***List comprehensions:
+-----------------------
+
+syntax :
+l=[expression for item in sequence]
+
+Ex: list of square of first 10 numbers
+l=[]
+for x in range(1,11):
+    l.append(x*x) # l.append(x**2)
+print(l)
+		or
+# using list comprehension
+l=[x*x for x in range(1,11)]
+print(l)
+
+# to print square of even first 10 numbers
+l=[x*x for x in range(1,11) if x%2==0]
+
+# double values from 1 to 100 where number should be divisible by 3
+s=[2*x for x in range(1,101) if x%3==0]
+print(s)
+
+# display name if length is greter than 5 characters
+words=['Aishwarya','Raj']
+l=[x for x in words if len(x)>5]
+print(l)
+
+#select numbers present in l1 but not in l2
+l1=[1,2,3];l2=[4,5,1]
+print([x for x in l1 if x not in l2])
+
+# Ex
+words="the quick brown fox jumps over the lazy dog"
+l=[[w.upper(), len(w)] for w in words]
+print(l)
+	
+# unique vowels present in the given word
+vowels=['a','e','i','o','u']
+word=input("Enter your name : ")
+output=[]
+for letter in word:
+	if letter in vowels:
+		if letter not in output:
+			output.append(letter)
+print(output)
+print('The length of unique vowels : ', len(output))
+
+Tuple :
+=======
+
+*** List vs Tuple
+> tuple is read only version of List (Immutable)
+> insertion order is preserved
+> duplicates are allowed
+> allows both homogeneous and heterogenious objects
+> indexing is possible 
+> ()
+tuple creation  :
+-----------------
+t=()
+t=10,
+t=(10,)
+t=(10,20,30)
+t=10,20,30
+> convert list or set to tuple : t=tuple(l)
+> Accessing elements of tuple : 1. using index and 2. using slice
+> Mathematical operators of tuple : + and *
+Important functions of tuple :
+------------------------------
+1. len()
+2. count()
+3. index()
+4. sorted()  # after sorting, returns list type
+5. min()
+6. max()
+** Tuple packing and unpacking :
+--------------------------------
+> packing
+Ex :
+a,b,c,d=10,20,30,40
+t=a,b,c,d
+print(t)
+
+> unpacking
+Ex :
+t=(10,20,30,40)
+a,b,c,d=t
+print(a,b,c,d)
+
+**Tuple comprehension :
+=======================
+> It is not applicable in tuple. because after executing tuple comprehension, it returns "generator" type
+t=(x*x for x in range(1,11))
+print(type(x))
+for v in t:
+	print(v)
+
+Ex: Generator example 
+
+def generator_fibonacci():
+	a,b=0,1
+	while True:
+		yield a
+		a,b=b,a+b
+seq=generator_fibonacci()
+print(next(seq))
+print(next(seq))
+print(next(seq))
+
+Ex : 
+t=eval(input("Enter tuple : "))
+sum=0
+for x in t:
+	sum=sum+x
+print("sum is : ", sum)
+print("The avg is : ", sum/len(t))
+
+Set :
+=====
+
+> duplicates are not allowed
+> insertion order is not preserved
+> no indexing and no slicing
+> homogeneous and heterogenious objects are allowed
+> Mutable
+> elements are enclosed in {}
+
+Creating set objects :
+---------------------- 
+s={10,20,30}
+*** s=set() -> empyt set | s={} -> creates empty dict
+s=set(sequence)
+
+Important functions of set :
+----------------------------
+
+1. add(x) -> adds x element to the set
+2. update(x,y,z) -> adds multiple elements to the set
+*** add() vs update()
+Ex :
+s=set()
+s.update([10,20],(10,20),'Raja',range(0,6))
+print(s)
+s.add("[6,7,8]")
+print(s)
+
+*** List is not hashable and tuple is hashable. why ?
+-----------------------------------------------------
+
+Ex: 
+s=set()
+s.add(10)
+# s.add(10,20,30) invalid
+# s.update(10) invalid due to int object is not iterable
+s.update([10,20],range(10))
+# s.add([10,20]) invalid due to list not hashable 
+print(s)
+
+Ex.
+l = [1,2,3,4]
+# show the hash value
+print(hash(l))
+# show the id value
+print(id(l))
+# show the hash value
+print (l.__hash__())
+t = (1,2,3,4)
+print(hash(t))
+print(id(t))
+print(t.__hash__())
+
+3. copy() : used to clone another set object
+
+Ex:
+s1={1,2,3}
+s2=s1.copy()
+s1.add(4)
+print(s1)
+print(s2)
+
+4. pop() : removes random element from given set
+
+Ex:
+s1={1,2,3}
+print(s1.pop())
+print(s1)
+print(s1.pop())
+print(s1)
+print(s1.pop())
+print(s1)
+
+5. remove(x) : used to remove particular element from given set. If the value is not present, it throws 'Key error'
+
+Ex:
+s1={1,2,3}
+s1.remove(3)
+print(s1)
+s1.remove(1)
+print(s1)
+s1.remove(2)
+print(s1)
+
+6. discard(x) : used to remove particular element from given set. If value is not present, It will not throws any 'key error'
+7. clear() : used to clear all elements from the set
+8. union()
+9. inetrsection()
+10. difference() : returns uncommon elements from first set not from second set
+11. symmetric-difference()
+Ex :
+s1={1,2,3}
+s2={2,3,4,5}
+s3=s1.union(s2)   # s1|s2
+print(s3)
+s4=s1.intersection(s2)   # s1&s2
+print(s4)
+s5=s1.difference(s2)   # s1-s2
+print(s5)
+s6=s1.symmetric_difference(s2)  # s1^s2
+print(s6)
+
+Membership operators in set :
+-----------------------------
+s=set('Rajakumar')
+print(s)
+print('R' in s)
+print('R' not in s)
+print('z' not in s)
+print('z' in s)
+
+Set comprehension :
+-------------------
+
+syntax : s={expression for x in sequence condition}
+Ex:
+s={x*x for x in range(5)}
+print(s)
+
+Ex:
+s1={2*x for x in range(2,11,2)}
+print(s1)
+
+Note : Set object does't support slicing and indexing
+
+Ex:
+s1=(1,2,3)
+print(s[0]) # not support indexing
+print(s[::]) # not support slicing
+
+Ex : Program to delete duplicates in the list
+----------------------------------------------
+first method :
+--------------
+l=eval(input('Enter list : '))
+s=set(l)
+print(s)
+second method :
+---------------
+l=eval(input('Enter list : '))
+l1=[]
+for x in l:
+    if x not in l1:
+        l1.append(x)
+print(l1)
+
+Ex : WAP to print different vowels present in given name
+---------------------------------------------------------
+
+word=input('Enter any name : ')
+s=set(word)
+print(s)
+vowels={'a','e','i','o','u'}
+d=s&vowels
+print('The different vowels presented in ', word, 'are :',d)
+print('The different vowels presented in ', word, 'are :',sorted(d))
+
+frozenset :
+===========
+
+> frozenset is readable version of set
+> It is immutable
+> Insertion order has no gaurante
+> duplicatesare not allowed
+> Slicing and indexing is not applicable
+> homogeneous and heterogenious objects are allowed
+
+defination :
+------------
+> frozenset(iterable-item)
+
+Ex:
+str1="Rajakumar Battula"
+fs=frozenset(str1)
+print(type(fs))
+print(fs)
+
+l=[1,2,3]
+fs=frozenset(l)
+print(type(fs))
+print(fs)
+
+s={1,2,3}
+fs=frozenset(s)
+print(type(fs))
+print(fs)
+
+t=(1,2,3)
+fs=frozenset(t)
+print(type(fs))
+print(fs)
+
+# print(fs[1]) -> illegal
+
+***dictionary :
+==============
+
+> Uses to store group of key, value pairs
+
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+
+> insertion order is preserved
+> scalable / mutable
+> do not allow duplicate keys
+> allowedd homogeneous and heterogenious objects
+
+Creation :
+==========
+ > d={}
+ > d=dict()
+ > d={ 'a':1, 'b':2, 'c':3}
+
+To add key and value :
+----------------------
+d={}
+d[key]=value
+
+> If the key is already present the old value will be replaced with new value
+
+Ex:
+d=dict()
+d[1]='a'
+d[2]='b'
+d[3]='c'
+print(d)
+
+Accessing values from the dictionary :
+--------------------------------------
+
+> using key, we can directly access its value
+Ex :
+d={ 'a':1, 'b':2, 'c':3}
+print(d['a'])
+
+> if key is not avaialblein dictionary, we will get key error. to avoid this,
+
+Ex :
+d={ 'a':1, 'b':2, 'c':3}
+if 'a' in d:
+	print(d['a'])
+else:
+	print("Key not found")
+
+updating dictionaries :
+-----------------------
+> d[key]=value
+
+Ex:
+d['a']=100
+d['a']=d['a']+1
+
+deleting elements from the dictionary :
+---------------------------------------
+> using 'del', we can delete elemenets in the dictionary. If key is not present, we will get 'KeyError'
+
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+print(d)
+del d['a']
+print(d)
+
+> to delete all values, we should use clear()
+
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+d.clear()
+print(d)
+
+Important functions of dictioary :
+----------------------------------
+
+1. dict() : creates empty dictionary
+2. len(d) : returns length of the dictionary
+3. get(key) : returns value associated with key
+4. pop(key) : deletes key and value pair which is associated with particular key. If key is not present, we will get 'KeyError'
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+print(d.pop('a'))
+print(d)
+
+5.popitem() : randomly removes the key-value pair
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+print(d.popitem('a'))
+print(d)
+
+6.keys() : returns list of all keys from the given dictionary
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+print(d.keys())
+
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+for k in d.keys():
+	print(k)
+
+7.values() : returns list of all values from the given dictionary
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+for v in d.values():
+	print(v)
+
+8. items() : returns list of tuples representing key-values pairs
+Ex:
+d={ 'a':1, 'b':2, 'c':3}
+for k,v in d.items():
+	print(k,':',v)
+
+9. copy() : Used to clone dictioary
+Ex:
+d1={ 'a':1, 'b':2, 'c':3}
+d2=d1.copy()
+d2['d']=4
+print(d2)
+print(d1)
+
+10. setdefault(k,v) : returns corresponding values for the given key. If key is not avaialble, Then it updates value to the corresponding key
+Ex:
+d1={ 'a':1, 'b':2, 'c':3}
+print(d1.setdefault('d',4))
+print(d1)
+
+11.update(dict1) : Add dict1 dictioary to given dictioary
+Ex:
+d1={ 'a':1, 'b':2, 'c':3}
+d2={'d':4, 'Raja':6.1}
+d1.update(d2)
+print(d1)
+
+functions :
+===========
+> code reusability
+> two types : predefined functions and user defined functions
+> defination :
+	def function-name():
+		<statements>
+		return <value>
+> return statement is optional. by default, function returns null
+> Using functions, we can acheive DRY code (Don't repeat yourself) and we can avoid WET code (write everything twice)
+
+Ex :
+def write(name):
+	print("Hello..,",name,"Good morning..!")
+# write() -> illegal
+# write(Rajakumar) -> legal
+name=input("Enter name : ")
+write(name)
+
+Ex:
+def squareIt(x):
+	return x*x
+n=int(input("Enter any number : "))
+print("The square of {} is {}".format(n,squareIt(n)))
+
+> method overloading and method overriding concept is not available in python
+
+Ex:
+
+def add(x,y):
+	return x+y
+def add(x+y+z)
+	return x+y+Z
+# we can call add(1,2,3)
+
+Ex : factorial
+
+def factorial(n):
+	result=1
+	while n>=1:
+		result*=n
+		n-=1
+	return result
+for i in range(1,11):
+	print("The factorial of {} is {}".format(i,factorial(i)))
+
+Ex : 
+
+def sum_sub(a,b):
+    sum,sub=a+b,a-b
+    return sum,sub
+x,y=sum_sub(10,5)
+print("The sum is %i and the sub is %i" %(x,y))
+
+> type of arguments in python
+	1. positional arguments
+	2. keyword      "   "
+	3. default      "   "
+	4. variable length ""
+	5. keyword variable length arguments
+
+1. positional arguments : position matters in a function call.
+	Ex:
+	def sum(a,b):
+		print(a-b)
+	sub(200,50)  --> a=200 and b=50
+	
+2. Keyboard arguments : .Order is not important, increses more readability
+	Ex:
+	def sub(a,b):
+		print(a-b)
+	sub(a=100, b=200)
+
+	Ex:
+	def wish(name, msg):
+		print('Hello: ', name, msg)
+	wish(name="Raja", msg="Good day")
+	wish(msg="Good day", name="Raja")
+	
+Note: In any function, we can also pass positional and keyboard arguments at a time. But we should pass positional arguments first and then pass keyboard arguments
+
+3. Default arguments :
+	Ex:
+	def wish(name="Raja")
+		print("Hello ",name,"Good morning")
+	wish("Rama")
+	wish() --> takes default value
+
+4. Variable length arguments : we can pass any number of arguments. by default these arguments stored in the form of tuple
+	Ex: 
+	def m1(*n):
+		print(type(n))
+		print('var-arg fun')
+	m1()
+	m1(10)
+	m1(10,20,30)
+Ex:
+def sum(*n):
+	total=0
+	for n1 in n:
+		total+=n1
+	print("The sum is : ", total)
+sum()
+sum(10,20)
+sum(10,20,30)
+
+Ex:
+def f1(*n,x):
+    print('normal argument',x)
+    print('variable length argument : ')
+    for i in n:
+        print(i)
+# f1() 
+# f1(10)
+f1(x=10)
+# f1(10,20,30)
+f1(10,20,x=30)
+# f1(x=10, 20,30)
+
+5. variable length keyboard arguments : any no of keywords arguments can be passed. It's default type is dictionary
+Ex:
+
+def f1(**kwargs):
+	print('variable length keyword argument method')
+	for k,v in kwargs.items():
+		print(k,'=',v)
+f1(x=10, y=20, z=30)
+f1(name="Raja",sub1="python",sub2="java")
+
+Ex :
+
+def f1(a,b,c,*n,x=25):
+	...
+	...
+f1(10,20,c=30,1,2,3,x=99)
+
+> In core python, variables in functional programming are two types 1.local 2. global
+
+Ex:
+a=10 -> by defacult it is global variable
+def f1():
+	b=10 -> by default it is local variable
+	
+> global keyword: using global keyword we can declare glabal variable with in function
+
+Ex:
+def f1():
+	global a
+	a=999
+	print(a)
+def f2():
+	print(a)
+f1()
+f2()
+
+Recursive functions:
+--------------------
+
+A function calling itself again and again
+
+> we can reduce length of the code
+> we can solve complex problems easily
+
+Ex: factorial operation using recursive function
+
+def factorial(n):
+    if n==0:
+        return 1
+    else:
+        return n*factorial(n-1)
+print('Factorial of 4 is :', factorial(4))
+
+Anonymous functions : [  lambda functions or lambda expressions  ]
+==================================================================
+
+> If functions declared without name. That functions are called as "Anonymous functions". We use these functions instantly
+Ex: 
+def square(n):
+	return n*n
+print(square(4))
+
+> same example using lambda function :
+Ex: square
+s=lambda n:n*n
+print(s(5))
+
+Ex: Sum
+sum=lambda a,b:a+b
+print(sum(2,3))
+
+Ex: largest
+s=lambda a,b:a if a>b else b
+print(s(89,66))
+
+> Every lambda function returns value implicitely. No need to write 'return' keyword
+
+*** filter(), map(), reduce() functions : 
+=========================================
+
+filter(function,sequence) :
+---------------------------
+
+> filter function filters no of elements based on given condition inside any sequence (list,string,tuple,...)
+
+Ex:
+
+l=[0,5,10,15,20,25,30,35,40,45,50]
+def isEven(n):
+	if n%2==0:
+		return True
+	else:
+		return False
+l1=list(filter(isEven,l))
+print(l1)
+
+using lambda expression :
+-------------------------
+
+l=[0,5,10,15,20,25,30,35,40,45,50]
+l1=list(filter(lambda n:n%2==0,l))
+print(l1)
+
+map(function,sequence): map function performs functional operational inside any sequence (list,string,tuple,...)
+-----------------------
+
+Ex: 
+def cube(n):
+	return n**3
+l=[2,3,5,7,11]
+l1=list(map(cube,l))
+print(l1)
+
+or
+
+l=[2,3,5,7,11]
+l1=list(map(lambda n:n**3,l))
+print(l1)
+
+Ex : product of two lists
+
+l1=[2,3,5,7,11]
+l2=[4,2,3,5,8]
+l3=list(map(lambda x,y:x*y, l1, l2))
+print(l3)
+
+***reduce(function,sequence):
+-----------------------------
+
+> It reduces sequence of elements
+> returns only a value. type casting is not required
+> reduce() is not implicitely available. To use this method, we need to explicitly import this method from "functools" module
+									"from functools import reduce"
+Ex:
+from functools import reduce
+l=[10,20,30,40,50]
+result=reduce(lambda x,y:x+y,l)
+print(result)
+
+Function aliasing : Giving another name to the existing function
+----------------------------------------------------------------
+
+Ex:
+def add(n1,n2):
+    return n1+n2
+a=int(input("Enter n1 : "))
+b=int(input("Enter n2 : "))
+add(a,b)
+sum=add
+sum(a,b)
+print(sum(a,b))
+del add
+print(sum(a,b))
+print(add(a,b)) # error due to add() not available
+
+Nested functions :
+==================
+
+> define function inside another function is called as "nested functions"
+
+Ex:
+
+def f1():
+	print("outer function")
+	def f2():
+		print("inner function")
+	print("calling inner function from outer function")
+	f2()
+print("outer function calling")
+f1()
+
+> Inner function can't be accessible directly from outside inner function
+> To reduce no.of lines in the function. we can use "nested functions"
+
+Ex:
+
+def outer():
+	def add(*n):
+		print(sum(n))
+	add(10,20)
+outer()
+
+Ex:
+
+def f1():
+    def inner(*n):
+        sum=0
+        for i in n:
+            sum+=i
+        return sum
+    print("Addition of a and b is ",inner(2,3,5))
+    print("Addition of a and b is ",inner(4,5))
+    print("Addition of a and b is ",inner(101,209))
+    print("Addition of a and b is ",inner(3333,9))
+    print("Addition of a and b is ",inner(1908,76))
+    print("Addition of a and b is ",inner(98669,98698))
+    print("Addition of a and b is ",inner())
+    print("Addition of a and b is ",inner(98,66,9,98,6,98))
+f1()
+
+***Function Decorators :
+========================
+
+> To add extra functionality to the function without changing its original functionality, we can use function Decorators
+
+Ex:
+
+def decor(func):
+    def inner():
+        print('Enhanced function')
+    return inner
+
+@decor
+def f3():
+    print('Normal function')
+    
+f3()
+
+Ex:
+
+def decor1(func):
+    def inner():
+        func()
+        print('Enhanced function for f1')
+    return inner
+
+def decor2(func):
+    def inner():
+        print('Enhanced function for f2')
+    return inner
+
+def decor3(func):
+    def inner():
+        print('Enhanced function for f3')
+    return inner
+
+@decor1
+def f1():
+    print('Normal function for f1')
+
+@decor2
+def f2():
+    print('Normal function for f2')
+
+@decor3
+def f3():
+    print('Normal function for f3')
+
+f1()
+f2()
+f3()
+
+Ex:
+
+def decor(func):
+    def inner(name):
+        if name=='Rama':
+            print("Hi Rama")
+    return inner
+
+@decor
+def f1(name):
+    print("Hello ",name)
+
+f1("Krishna")
+f1("Rama")
+
+Exception Handling :
+====================
+
+> Any programming language there are two type of errors are possible :
+	1) syntax errors and 2) Run time errors
+> Exception handling concept to handle runtime errors.
+> Exception : It is an unexpected event occurs during run time execution of the program
+> Ex : ZeroDivisionError, TypeError, ValueError, FileNotFoundError, EOFError ... etc
+> Exception handling concept provides alternate way to complete execution flow of your program
+> Ex. programming requirement is reading data from remote file locating at 
+	London. At runtime if london file is not available then the program should not be 
+	terminated abnormally. We have to provide local file to continue rest of the program 
+	normally. This way of defining alternative is nothing but exception handling.
+	
+	try :
+			read data from remote file locating at london
+	except FileNotFoundError:
+			use local file and continue rest of the program normally
+		
+> Every exception in python is an object. For every Exception type, the correpomding classes are available
+
+try/except block :
+
+stmt 1
+try:
+	stmt 2
+	stmt 3
+	stmt 4
+except Ex:
+	stmt 5
+stmt 6
+
+Ex:
+print('Hello')
+print(10/0) --> ZeroDivisionError
+print('Hi')
+
+using exception handling :
+-------------------------
+print('Hello')
+try:
+	print(10/0)
+execpt ZeroDivisionError:
+	print(10/2)
+print('Hi')	
+Exception hierarchy :
+=====================
+
+BaseException(super class): 1.Exception		2. SystemExit		3. GeneratorExit		4. KeyboardInterrupt
+> Exception : Attribute Error, Arithmatic Error, EOF Error,  Name Error,  Lookup error,  OS Error,  Type Error, Value Error
+> Arithmatic error: ZeroDivisionError, FloatingPointError,  OverflowError
+> Lookup Error: Index Error, Key Error
+> OS Error: FileNotFoundError, InterruptedError, PermissionError, TimeOutError
+
+> How to print exception information :
+--------------------------------------
+
+try:
+	print(10/0)
+except ZeroDivisionError as msg:
+	print('Exception raised : ',msg)
+	
+> try with multiple excepts :
+-----------------------------
+
+try:
+	...
+	...
+	...
+except ZeroDivisionError as msg1:
+	print('Raised Exception : ',msg1)
+except FileNotFoundError as msg2:
+	print('Raised Exception : ',msg2)
+	
+	
+Ex:
+
+try: 
+  x=int(input("Enter First Number: ")) 
+  y=int(input("Enter Second Number: ")) 
+  print(x/y) 
+except ZeroDivisionError: 
+  print("Can't Divide with Zero") 
+except ValueError: 
+  print("please provide int value only")
+  
+> Single except block that can handle multiple exceptions :
+-----------------------------------------------------------
+
+> We can write a single except block that can handle multiple different types of exceptions
+
+	except (Exception1,Exception2,exception3,..): or
+	except (Exception1,Exception2,exception3,..) as msg : 
+
+> Parenthesis are mandatory and this group of exceptions internally considered as tuple.
+
+Ex:
+
+try: 
+	x=int(input("Enter First Number: ")) 
+	y=int(input("Enter Second Number: ")) 
+	print(x/y) 
+except (ZeroDivisionError,ValueError) as msg: 
+	print("Plz Provide valid numbers only and problem is: ",msg)
+	
+> Default except block:
+-----------------------
+
+> We can use default except block to handle any type of exceptions.
+> In default except block generally we can print normal error messages.
+	Syntax: 
+	 except:
+	 statements
+Eg:
+try: 
+	 x=int(input("Enter First Number: ")) 
+	 y=int(input("Enter Second Number: ")) 
+	 print(x/y) 
+except ZeroDivisionError: 
+	print("ZeroDivisionError:Can't divide with zero") 
+except: 
+	print("Default Except:Plz provide valid input only") 
+ 
+D:\Python_classes>py test.py 
+Enter First Number: 10 
+Enter Second Number: 0 
+ZeroDivisionError:Can't divide with zero
+
+***Note: If try with multiple except blocks available then default except block should be 
+		last,otherwise we will get SyntaxError.
+
+Eg:
+try: 
+	print(10/0) 
+except: 
+	print("Default Except") 
+except ZeroDivisionError: 
+	print("ZeroDivisionError") 
+ 
+SyntaxError: default 'except:' must be last 
+
+> Note: The following are various possible combinations of except blocks
+	1. except ZeroDivisionError:
+	2. except ZeroDivisionError as msg:
+	3. except (ZeroDivisionError,ValueError) :
+	4. except (ZeroDivisionError,ValueError) as msg:
+	5. except :
+
+finally block:
+==============
+
+> It is not recommended to maintain clean up code(Resource Deallocating Code or 
+Resource Releasing code) inside try block because there is no guarentee for the execution 
+of every statement inside try block always.
+
+> It is not recommended to maintain clean up code inside except block, because if there 
+is no exception then except block won't be executed.
+
+> Hence we required some place to maintain clean up code which should be executed 
+always irrespective of whether exception raised or not raised and whether exception 
+handled or not handled. Such type of best place is nothing but 'finally block'.
+
+> Hence the main purpose of finally block is to maintain clean up code.
+
+	try:
+	 Risky Code
+	except: 
+	 Handling Code
+	finally:
+	 Cleanup code
+ 
+Case-1: If there is no exception
+	try: 
+		print("try") 
+	except: 
+		print("except") 
+	finally: 
+		print("finally") 
+ 
+Output:
+ try 
+ finally
+
+Case-2: If there is an exception raised but handled:
+	try: 
+		 print("try") 
+		 print(10/0) 
+	except ZeroDivisionError: 
+		print("except") 
+	finally: 
+		print("finally") 
+Output
+	try
+	except 
+	finally 
+
+Case-3: If there is an exception raised but not handled:
+	try: 
+		print("try") 
+		print(10/0) 
+	except NameError: 
+		print("except") 
+	finally: 
+		print("finally") 
+	 
+Output :
+	try 
+	finally 
+	ZeroDivisionError: division by zero(Abnormal Termination) 
+
+*** Note: There is only one situation where finally block won't be executed i.e, whenever 
+	we are using os._exit(0) function.
+
+
+> Whenever we are using os._exit(0) function then Python Virtual Machine itself will be 
+	shutdown. In this particular case finally won't be executed.
+
+import os
+try: 
+	print("try") 
+	os._exit(0) 
+except NameError: 
+	print("except") 
+finally: 
+	print("finally") 
+ 
+Output
+	try 
+> Note:
+	os._exit(0)
+	 where 0 represents status code and it indicates normal termination
+	 There are multiple status codes are possible.
+ 
+Control flow in try-except-finally:
+
+	try:
+	 stmt-1
+	 stmt-2
+	 stmt-3
+	except:
+	 stmt-4
+	finally:
+	 stmt-5
+	stmt6
+ 
+Case-1: If there is no exception
+
+	1,2,3,5,6 Normal Termination
+Case-2: If an exception raised at stmt2 and the corresponding except block matched
+	1,4,5,6 Normal Termination
+Case-3: If an exception raised at stmt2 but the corresponding except block not matched
+	1,5 Abnormal Termination
+Case-4:If an exception raised at stmt4 then it is always abnormal termination but before 
+	that finally block will be executed.
+Case-5: If an exception raised at stmt-5 or at stmt-6 then it is always abnormal 
+	termination
+
+Nested try-except-finally blocks:
+> We can take try-except-finally blocks inside try or except or finally blocks.i.e nesting of tryexcept-finally is possible.
+	try:
+	 ----------
+	 ----------
+	 ----------
+	 try:
+	 -------------
+	 --------------
+	 --------------
+	 except:
+	 --------------
+	 --------------
+	 --------------
+	 ------------
+	except:
+	 -----------
+	 -----------
+	 -----------
+> General Risky code we have to take inside outer try block and too much risky code we 
+	have to take inside inner try block. Inside Inner try block if an exception raised then inner 
+	except block is responsible to handle. If it is unable to handle then outer except block is 
+	responsible to handle.
+
+Eg:
+ try: 
+	print("outer try block") 
+	try: 
+		print("Inner try block") 
+		print(10/0) 
+	except ZeroDivisionError: 
+		print("Inner except block") 
+	finally: 
+	    print("Inner finally block")
+except: 
+	print("outer except block") 
+finally: 
+	print("outer finally block")
+	
+ Output
+ outer try block 
+ Inner try block 
+ Inner except block 
+ Inner finally block 
+ outer finally block
+
+Control flow in nested try-except-finally:
+try:
+	stmt-1
+	stmt-2
+	stmt-3
+	try:
+		stmt-4
+		stmt-5
+		stmt-6
+	except X:
+		stmt-7
+	finally:
+		stmt-8
+		stmt-9
+except Y:
+	stmt-10
+finally:
+	stmt-11
+	stmt-12
+
+case-1: If there is no exception
+	1,2,3,4,5,6,8,9,11,12 Normal Termination
+case-2: If an exception raised at stmt-2 and the corresponding except block matched
+	1,10,11,12 Normal Termination
+case-3: If an exceptiion raised at stmt-2 and the corresponding except block not matched
+	1,11,Abnormal Termination
+case-4: If an exception raised at stmt-5 and inner except block matched 
+	1,2,3,4,7,8,9,11,12 Normal Termination
+case-5: If an exception raised at stmt-5 and inner except block not matched but outer except block matched
+	1,2,3,4,8,10,11,12,Normal Termination
+case-6:If an exception raised at stmt-5 and both inner and outer except blocks are not matched 
+	1,2,3,4,8,11,Abnormal Termination
+case-7: If an exception raised at stmt-7 and corresponding except block matched
+	1,2,3,.,.,.,8,10,11,12,Normal Termination
+case-8: If an exception raised at stmt-7 and corresponding except block not matched
+	1,2,3,.,.,.,8,11,Abnormal Termination
+case-9: If an exception raised at stmt-8 and corresponding except block matched
+	1,2,3,.,.,.,.,10,11,12 Normal Termination
+case-10: If an exception raised at stmt-8 and corresponding except block not matched
+	1,2,3,.,.,.,.,11,Abnormal Termination
+case-11: If an exception raised at stmt-9 and corresponding except block matched
+	1,2,3,.,.,.,.,8,10,11,12,Normal Termination
+case-12: If an exception raised at stmt-9 and corresponding except block not matched
+	1,2,3,.,.,.,.,8,11,Abnormal Termination
+case-13: If an exception raised at stmt-10 then it is always abonormal termination but before abnormal termination finally block(stmt-11) will be executed
+case-14: If an exception raised at stmt-11 or stmt-12 then it is always abnormal termination.
+> Note: If the control entered into try block then compulsary finally block will be executed.If the control not entered into try block then finally block won't be executed.
+
+else block with try-except-finally:
+-----------------------------------
+
+> We can use else block with try-except-finally blocks.
+> else block will be executed if and only if there are no exceptions inside try block.
+
+try:
+	Risky Code
+except:
+	will be executed if exception inside try
+else:
+	will be executed if there is no exception inside try
+finally:
+	will be executed whether exception raised or not raised and handled or not handled
+
+Eg:
+try:
+	print("try")
+	print(10/0)--->1
+except:
+	print("except")
+else:
+	print("else")
+finally:
+	print("finally")
+
+> If we comment line-1 then else block will be executed b'z there is no exception inside try.
+
+> In this case the output is:
+	try
+	else
+	finally
+	
+> If we are not commenting line-1 then else block won't be executed b'z there is exception 
+
+inside try block. In this case output is:
+	try
+	except
+	finally
+
+Various possible combinations of try-except-else-finally:
+
+	1. Whenever we are writing try block, compulsory we should write except or finally block.i.e without except or finally block we cannot write try block.
+	2. Wheneever we are writing except block, compulsory we should write try block. i.e	except without try is always invalid.
+	3. Whenever we are writing finally block, compulsory we should write try block. i.e finally	without try is always invalid.
+	4. We can write multiple except blocks for the same try,but we cannot write multiple 	finally blocks for the same try
+	5. Whenever we are writing else block compulsory except block should be there. i.e 	without except we cannot write else block.
+	6. In try-except-else-finally order is important.
+	
+	
