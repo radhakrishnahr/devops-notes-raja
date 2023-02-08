@@ -104,6 +104,30 @@ az vm create --resource-group ${RG} --name LINUXVM2 --image UbuntuLTS --vnet-nam
 watch ls
 
 
+===================
+
+
+for windows vm,
+
+1) disable IE Enhanced security configuration available at Local Server option
+2) open command promt -> firewall.cpl (enter) -> Turn off windows defender firewall
+3) (i) open cmd > ipconfig /all > ncpa.cpl > opens ethernet > properties > we can add dns server
+   (ii) open azure vnet resource > DNS server > custom > enter IP Address and DNS server's IP address
+   (iii) open virtual machine > Networking > NetworkInterface > DNS servers > custom > ipaddress of dns server > hard reboot
+		and verify by executing these commands > ipconfig /all > sysdm.cpl (check)
+		open Server Manager > manage > Add roles and features wizard > next next ... > check Active directory domain services > next next .. > install
+		> need to check post deployment configuration (yello triangle shaped box on right top !)
+		> click on promote this server to a domain controller > add a new forest > enter domain name (aishwaryarajbattula-k8s.xyz)
+		> next ... > install > it reboots system
+		> after logged in to the server, excute  sysdm.cpl and dsa.msc and check dns name of the server
+====================	
+
+> to decommission the resources, We can manually delete the resource group or by executing following command on cloudshell we can cleanup our resources.
+
+			az group delete --name RAJA-RG --yes
+	
+
+
 
 
 
