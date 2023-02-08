@@ -1,0 +1,113 @@
+azure notes : (Admin vs Dev)
+============================
+
+Azure hierarchy :
+
+1) TENANT_ID (using tenant id we can connect with other microsoft applications like o365, ms dynamics, etc--)
+2) MICROSOFT AZURE PUBLIC CLOUD
+3) SUBSCRIPTION ( EX: DEV, PROD, STAGIND)
+4) RESOURCE_GROUP
+5) AZURE RESOURCES (VNET, VM, LB, AUTO, SQL, ..etc) 
+
+IP Addressing :
+===============
+
+IP Address Ranges :
+
+IPv4 : 192.168.1.100
+0.0.0.0 to 255.255.255.255
+
+Class A : 1.0.0.0 to 127.255.255.255
+Class A Private Range : 10.0.0.0 to 10.255.255.255
+
+Class B : 128.0.0.0 to 191.255.255.255
+Class B Private Range : 171.16.0.0 to 172.31.255.255
+
+Class C : 192.0.0.0 to 223.255.255.255
+Class C Private Range : 192.168.0.0 to 192.168.255.255
+
+TERMINALOGY : NETWORK ADDRESS TRANSLATING (NAT), PUBLIC IP, PRIVATE IP
+
+SUBNETTING : Divides a big network in to small parts
+============
+10.0.0.0/8 to 255.255.255.255 ---> 16million IP's
+255.0.0.0 - Subnet Mask or Mask
+
+10.0.0.0/16 ---> 65000
+255.255.0.0
+
+10.0.0.0/24 ---> 255
+255.255.255.0
+
+Ex : 
+10.1.0.0/16 cidr block
+WebServers -> 10.1.1.0/24 => 255
+AppServers -> 10.1.2.0/24 => 255
+DbServers -> 10.1.3.0/24 => 255
+
+Regions and Availability Zones :
+================================
+Region : A geographic location of multiple availability zones
+Availability Zones :
+
+Note : We can create azure resources from other region under the Azure RG even RG is created at specific region.
+
+ Azure Cloud Shell :
+ ===================
+ 
+ shell.azure.com
+ 
+ > watch ls ( to prevent log off )
+ > cntl+l (to clear your screeen)
+ 
+ -> cloud shell creates RG, storage account in backend to store your files.
+ 
+ -> We can use Bash(bash) or Power shell(pwsh)
+ 
+Sample bash script to create Azure resources :
+==============================================
+ 
+RG=RAJA-RG
+az group create --location eastus -n ${RG}
+
+az network vnet create -g ${RG} -n ${RG}-vNET1 --address-prefix 10.1.0.0/16 \
+--subnet-name ${RG}-Subnet-1 --subnet-prefix 10.1.1.0/24 -l eastus
+
+
+az network vnet subnet create -g ${RG} --vnet-name ${RG}-vNET1 -n ${RG}-Subnet-2 \
+--address-prefixes 10.1.2.0/24
+
+az network vnet subnet create -g ${RG} --vnet-name ${RG}-vNET1 -n ${RG}-Subnet-3 \
+--address-prefixes 10.1.3.0/24
+
+az network vnet subnet create -g ${RG} --vnet-name ${RG}-vNET1 -n AzureFirewallSubnet \
+--address-prefixes 10.1.10.0/24
+
+az network nsg create -g ${RG} -n ${RG}-NSG1
+
+az network nsg rule create -g ${RG} --nsg-name ${RG}-NSG1 -n ${RG}-NSG1_RULE1 --priority 100 \
+--source-address-prefixes '*' --source-port-ranges '*'     --destination-address-prefixes '*' \
+--destination-port-ranges '*' --access Allow     --protocol '*' --description "Allowing All Traffic For Now"
+
+az vm create --resource-group ${RG} --name WINVM1 --image win2019Datacenter --vnet-name ${RG}-vNET1 \
+--subnet ${RG}-Subnet-1 --admin-username raja-vm --admin-password "India@123456" --size Standard_B2ms \
+--nsg "" 
+
+#${RG}-NSG1 --custom-data ./clouddrive/cloud-init2.txt
+
+az vm create --resource-group ${RG} --name LINUXVM2 --image UbuntuLTS --vnet-name ${RG}-vNET1 \
+--subnet ${RG}-Subnet-2 --admin-username raja-vm --admin-password "India@123456" --size Standard_B1s \
+--nsg ""
+
+#${RG}-NSG1 --custom-data ./clouddrive/cloud-init2.txt
+
+watch ls
+
+
+
+
+
+
+ 
+ 
+ 
