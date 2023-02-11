@@ -212,10 +212,88 @@ two basic rules :
 > To add user in one account, Active Directory > Users > New User > Invite User > Invite [ another will get email to accept invitation ]
 > To set permissions to the User, Users > select User > Assigned Roles > Add Assignements > select roles and add
 > To set contributor access to the User from current subscription, subscriptions > select subscription > IAM > Add Role > Select contributor > Assign access to the User > Next > Review and Assign
+> To set vnet peering between azure and on-premises ( or any cloud), we require "virtual network gateway"
+
+az network public-ip create \
+  -n VNG1PIP \
+  -g HUB-RG \
+  --allocation-method Dynamic
 
 
+az network vnet-gateway create \
+  -n VNG1 \
+  -l eastus \
+  --public-ip-address VNG1PIP \
+  -g HUB-RG \
+  --vnet HUB-VNET-1 \
+  --gateway-type Vpn \
+  --sku VpnGw1 \
+  --vpn-type RouteBased \
+  --no-wait
+site-to-site vpn setup :
+========================
+> This vpn enables communication between azure virtual network to on-premises servers or any public/private cloud
+> Let us consider AWS cloud, login to your AWS account
+> Create VPC with single subnet (198.168.0.0/16)
+> Create a virtual private gateway in AWS and attach to newly created vpc
+> Launch ubuntu t2.micro ec-2 server
+> Open site to site vpn connections > create a vpn connection > 
+		provide > Name tag (AWS-to-Azure) > Target Gateway type : vpg > VPG > Customer Gateway (new + Pub IP) > Routing options :static > static ip prefixes (azure vnet cidr ip's) > create a vpn connection
+		> we can see two tunnels under the Tunnel details.
+		> Download configuration > enter vendor : Cisco Systems, Inc | platform : ISR Series Routers | Download
+		> it downloads a file. In this file we can have tunnel1 and tunnel2 passwords
+> Open (Azure) Local network gateways > create > subscription, hubrg,region, aws-gw-1,ipaddress (copy from tunnel1 of downloaded config file), address space (aws vpc cidr) > review and create
+> Open (Azure) Local network gateways > create > subscription, hubrg,region, aws-gw-2,ipaddress (copy from tunnel2 of downloaded config file), address space (aws vpc cidr) > review and create
+> Open Azure VNG > connections > ADD connection > name(aws-tunnel-1), connection type(site-to-site), virtual network gateway name, local network gateway name, shared key(should be tunnel1 password from downloaded file) > ok
+> Open Azure VNG > connections > ADD connection > name(aws-tunnel-2), connection type(site-to-site), virtual network gateway name, local network gateway name, shared key(should be tunnel2 password from downloaded file) > ok	
+> In AWS cloud, we have to add Routing : VPC > Route Tables > Routes (edit) > add add azure vpg (10.1.0.0/16) > save changes
+> similarly add routes for the remaining virtual networks
 
+> to communicate servers inside spoke-rg, we need to enable the following.
+	> hub-rg : hub-vnet > peerings > hub-to-spoke > enable "Use this virtual network's gateway or Route Server"
+	> spoke-rg : spoke-vnet > peerings > spoke-to-hub > enable "Use the remote virtual network's gateway or Route Server"
 	
+point-to-site vpn setup :
+=========================
+> This vpn enables communication between azure virtual network to remote end users.
+> Launch randomly windows machine in any cloud (AWS)
+> To configure P2S vpn, please refer http://www.rebeladmin.com/2018/07/step-step-guide-azure-point-site-vpn/
+> Login to the windows server
+> Open power shell > to create root certificate, following command should be executed 
+
+$cert = New-SelfSignedCertificate -Type Custom -KeySpec Signature `
+-Subject "CN=REBELROOT" -KeyExportPolicy Exportable `
+-HashAlgorithm sha256 -KeyLength 2048 `
+-CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
+
+New-SelfSignedCertificate -Type Custom -DnsName REBELCLIENT -KeySpec Signature `
+-Subject "CN=REBELCLIENT" -KeyExportPolicy Exportable `
+-HashAlgorithm sha256 -KeyLength 2048 `
+-CertStoreLocation "Cert:\CurrentUser\My" `
+-Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
+
+> To check the path of the certificate : PS> mmc --> it opens micorsoft mnmt console, file > add/remove snap in > certificates > my user account > ok
+                                           > trusted root Certificates-Current User > Personal > Certificates > we can see newly created certificates here
+										   > right click on the rebelroot certificate and click on export
+										   > next > base64 > next > enter a name (ROOT) > Next > Finish (save on desktop)
+										   > right clicjk on the rebel client certificate and click on export
+										   > next > yes export key > next > enter password > filename (client) > select > certficate > Finish
+										   > On desktop, open root certificate on notepad and copy the content
+										   > On Azure VNG > point-to-site configuration > Address pool (randomly example : 172.30.0.0/16) | Tuneel type : IKEv2 and SSTP(SSL) | Auth type : cert | Name (REBELROOT) and paste the certificate.
+										   > Download VPN client > extract in aws windows vm
+										   > open that directory > open WindowsAmd64 directory > right click on VpnClientSetupAmd64 and run as administrator > yes
+										   > open network connections > right click on newly created hub-network HUB-VNET-1 and click on connect
+										   > now from cmd > excute ifconfig and verify IP's, we can see two IP's
+										   > now you can ping any server which is placed in azure hub vnet or any azure spoke vnets
+> Using Network watcher > Next hop > we can watch network traffic
+						> IP flow verify > we can check remote ports on remote servers
+						
+
+										   
+										   
+
+
+
 
 
 
