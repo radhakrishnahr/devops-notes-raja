@@ -1,0 +1,113 @@
+AZ-900:
+======
+
+virtual machines :
+------------------
+
+> vm can be created under any RG and RG can be a part of Subscription.
+> If we create vm, few other azure resources can be generated : vm, vnet, subnet, public IP, OsDisk, Network Interface, Network Security Group
+> We can resize vm
+> We can connect windows server using RDP (SSH, bastion)
+> We can install (Web server) any features from server manager > Add Roles and features
+> VM > DISKS > we can see os level disk which is managed disk(C:) for high available [ there is also temp disk(D:) is available which is not managable]
+> When we deploy a vm, azure allocates public ip and private ip. 
+> Using public ip (is another azure resource) we use rdp to connect with remote windows vm.
+> Using private ip we can internally communicate within vnet.
+> By default azure allocates static public ip by default. static public ip will not be change when we deallocating and reallocating the vm.
+> public ip is dynamic in nature. If deallocate and reallocate vm, dynamic public ip will change.
+
+
+Sizes of vm's :
+
+1. General purpose [ ideal for testing and devleopment ] : B, Dsv3, DC, DCv2...etc
+2. Compute optimized [ good for medium traffic web servers ] : F, Fs, Fsv2, FX
+3. Memory optimized [ great for relatinal database servers ] : Esv2, Ev3, DVv2, M ...etc
+4. Storage optimized [ Ideal for bigdata, sql,nosql databases ] : Lsv2,Lsv3, Lasv3
+5. GPU [Specialized virtual machines targeted for heavy graphic rendering and video editing] : NC, NCv2, NCv3, NCasT4_v3...etc
+6. Hign performance compute [Our fastest and most powerful CPU virtual machines with optional high-throughput network interfaces (RDMA).] : HB, HBv2, HBv3, HC
+
+Windows / Linux Virtual Machines Pricing :
+
+-> windows vm pricing depends on type of OS/software and region.
+-> If we have any windows liecence, based on that liecence we'll get instant discount (Show Azure Hybrid Benefit pricing) on windows vm.
+-> When we deploy an azure vm, based on its OS and region azzure will charge only for the vm only. Pricing for the other resources such as disk, vnet ..etc will be charged separately.
+
+Why do we choose Region ?
+
+> Region is geographical location of azure datacenter.
+> In side a datacenter, we can have many racks of physical servers.
+> Some services are available in region level and some are available in global level.
+> based on azure service availability in the region, cost, distance to the users we need to choose region.
+
+> Resource Group : logical entity to group of azure resources. Each resource is must be part of RG. A resource can't be part of multiple RG's or multiple subscriptions.
+> Azure Marketplace for virtual machines : We can deploy required application from azure marketplace through the vm.
+> Availability sets : It is a logical grouping of vm's. It helps to improve the entire availability of your application.
+	> When physical server in datacenter is downdue to any fault / under maintenence, In such case, availability set helps to manage these issues through Fault domain and Update domain.
+	> Update domain : Here Azure will apply updates to the physical infrastructure one update domain at a time.
+	> Fault domain : Here the vm in the fault domain share a common power source and network switch.
+	> There is no additional cost for availability set. Charges for underlying vm'see
+	> Availability set is not reposible for to create vm's. It only manages availabilityof your machines.
+	> Availability set is not replicate the data acroos the VM's.
+> Availability zones : These are physical locations of datacenters in side the region. It is useful for the high availability of your application.
+	> There is no cost of AZ's but there is a cost of data transfer per GB between AZ's. AZ will not replicate your application. It manages your app in AZ's. It is your responsibility to replicate your application in different AZ's.
+> Azure dedicated host : It provides hardware isolation and no other vm's will be placed on the host. You can control maintenence events.
+> Virtual machine scale set service : This service is resposible for to increase or decrease your resources automatically as per the demand. 
+
+Azure Web App :
+---------------
+
+> If we want to host a web app on azure, we can use this service. This is PaaS.
+> Azure only manages underlying infrastructure.
+> This service can also scale up /down based on demand.
+> This service has support for .NET, .NET Core, Java, Ruby, Node.js, PHP, Python.
+> When we are creating Web app service, we need choose 'App Service Plan' for pricing purpose. It has Free F1, Shared D1, Basic B1 ,Standard S1, Premium V3 and Isolated V2 plans.
+
+Azure Functions : 
+----------------
+
+> It is a Serverless service to host your function code in Azure.
+> These is also an option to only pay based on your comsumption( no of invocations) of the function.
+> There is support for c#, Java, JavaScript, PowerShell and Python etc
+> It only charges for computation time of yout funtion in Azure's physical server.
+> You no need to take care of any Infrastructure. 
+> It has three plans ( Consumption(serverless), functions premium, app service plan )
+
+Containers :
+------------
+
+> Isolate our application using container. It is light weighted and easy to export in any environment.
+> We can run our application using container runtime such as docker.
+> for to manage microserve based application we need kubernetes.
+
+Azure container instance service :
+----------------------------------
+
+> This service is used to deploy our application using container.
+> We can upload images from public or private container registry
+> Azure provides their own service named azure container registry to host public/private docker images.
+
+Azure kubernetes :
+------------------
+
+> We can deploy fully managed kubernetes service using Azure.
+> It has different plans like Standard, Dev/Test, ...
+
+Azure Virtual Desktop :
+-----------------------
+
+> To deploy a virtual desktop. we need any liecence key and it prices for remotely connecting to the virtual desktop.
+> To set up virtual desktop, we need to create vnet and host pool.
+> From azure active directory, we need to assign liecence to the user.
+> From your host pool you need to assign virtual desktop to the user.
+
+Azure virtual network (vnet) :
+------------------------------
+
+> when we define vnet, we have to specify ip address range (10.0.0.0/16).
+> we can define subnets with proper IP adderess range (10.0.1.0/24).
+> subnet ip range would be sub set of ip address range of vnet.
+> when vm is deployed, a private ip is assigned based on ip range of subnet.
+> azure vnet is equivalent to on-premesis network. and also it is isolated azure network.
+> out bound traffic to the internet is allowed by default to the vnet.
+> *** There is no need to deploy any azure resource with in the same region of RG.
+> within the vnet, two subnets will communicate each other using theo
