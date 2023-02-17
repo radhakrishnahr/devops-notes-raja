@@ -110,4 +110,17 @@ Azure virtual network (vnet) :
 > azure vnet is equivalent to on-premesis network. and also it is isolated azure network.
 > out bound traffic to the internet is allowed by default to the vnet.
 > *** There is no need to deploy any azure resource with in the same region of RG.
-> within the vnet, two subnets will communicate each other using theo
+> within the vnet, two subnets will communicate each other using their private ip's.
+
+Network Security Groups :
+-------------------------
+
+> When we create a vm, it first creates NSG with default firewall rules and it gets attached to the Network Interface and the VM.
+> NSG is acts like basic firewall to allows only valid traffic to the VM from the Intetrnet.
+> It is uses to filter network traffic to/from azure resources with in VNET.
+> We can assiciate NSG with either Network Interface or a subnet.
+> The NSG contains rules that are used to allow or deny  inbound and outbound traffic.
+> The rules can also be applied to all VM's inside the network.
+> Default Inbound rules are AllowVnetInBound (priority=65000), AllowAzureLoadBalanceInBound (65001), DenyAllInBound (65500)
+> Default Outbound rules are AllowVnetOutBound (65000), AllInternetOutBound (65001), DenyAllOutBound (65500)
+
