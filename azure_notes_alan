@@ -124,3 +124,58 @@ Network Security Groups :
 > Default Inbound rules are AllowVnetInBound (priority=65000), AllowAzureLoadBalanceInBound (65001), DenyAllInBound (65500)
 > Default Outbound rules are AllowVnetOutBound (65000), AllInternetOutBound (65001), DenyAllOutBound (65500)
 
+Application Security Group :
+----------------------------
+
+> We can define one rule that allows Inbound traffic from 10.0.1.4 to 10.0.0.4.
+> But here there is a dependency on the IP addess.
+> Instead you canmake newvm part of an Application Security Group -  Let's say app-asg
+> And then define the rule in the NSG to allow traffic ffrom app-asg to 10.0.0.4.
+
+Overview of VPN connections to thr Azure :
+------------------------------------------
+
+> To connect vm located with in vnet from on-preses private network, By establishing point to site VPN we can communicate using private IP of Individual machine. for this we need to create azure virtual network gateway.
+> Another way is to use site to site VPN to communicate machines from on-premises network to azure vnet. It also requires azure virtual netwr=ork gateway and Local network gateway.
+
+Azure Express Route :
+---------------------
+
+> Allows you to connect your on-premises networks to Microsoft cloud over the private connection. Here the connection is established with the help of a connectivity provider
+> The ExpressRoute connection does not go over the public Internet.
+> Your connections are more reliable, faster and you get less latency.
+> You get two connections for each ExpressRoute circuit for redundancy,
+
+
+Azure Load Balancer :
+---------------------
+
+> The Load Balancer is used to distribute incoming traffic and distribute to the backend Azure VMs.
+> There are different SKU's ( Pricing models ) for the LB- Basic and Standard.
+> Basic LB - Nocharge -  But there is no SLA ( Service Level Agreement ). and there are other features like no built-in high availability.
+> Standard LB has an hourly charge. But you get different features like high availability via the use of Availability zones.
+> Public IP address - if it is a public load balancer.
+> Configure backed pool - need to group backend VM's as a pool.
+> Need to configure Health probe - This is used to monitor the balanced machines.
+> Need to create Load Balancing rules ( NAT rules ) - These are used to direct the requests coming into the LB to the balanced VMs.
+> Basic LB should be a part of scale set or availability set.
+
+Azure DNS Zone:
+---------------
+
+> You could access the web application via the Public IP address or the DNS allocated by Azure.
+> You can route the user traffic to your application via your own domain name.
+> You can use the Azure DNS service when it comes to name resolution.
+> You can also use the Azure DNS system to manage the DNS records.
+
+Azure virtual network peering :
+-------------------------------
+
+> An Azure vnet is an isolated network on the cloud.
+> By defaultthe azure vm's can't communicate acroos azure vnet's.
+> for this you have to create a azure vnet peering connection.
+> We can peer from two different subscriptions and also we can peer from two different accounts.
+
+
+
+
