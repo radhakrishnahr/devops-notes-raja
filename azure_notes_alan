@@ -176,6 +176,68 @@ Azure virtual network peering :
 > for this you have to create a azure vnet peering connection.
 > We can peer from two different subscriptions and also we can peer from two different accounts.
 
+Introduction to Azure Storage :
+===============================
+
+> Types of Azure storage accounts : 
+		> Azure storage account - blob storage : 
+		----------------------------------------
+			> Is is an object storage best used to store unstructured data like videos, pics, audio files using Azure storage accounts.
+			> Azure blob storage can grow automatically based on demand.
+			> It is also good for storing backups.
+		> Azure Storage account - file shares :
+		---------------------------------------
+			> Ex : Let us consider a company wants to maintain their each employee data. Then this serivce best suitable to fullfill this scenario.
+		> Azure Storage account - table storage :
+		-----------------------------------------
+			> This is great when you want to store non-relational structured data. This is when you data conforms to a schemaless design.
+		> Azure storage account - queue storage :
+		-----------------------------------------
+			> This is simple messaging based service.
+> Storage account name should be unique.
+> After creating storage account, we can see all types of storage accounts (containers, file shares, queues, tables) left side of storage account dashboard. 
+
+BLOB service :
+--------------
+
+> create a storage account > click on container > create new container > upload files from local system / from any resource.
+> It is object based storage system as it treats files as objects.
+> We will get URL for each object. Using URL we can access the object through browser.
+> To read data by anyone, we need to modify public access level to anonymous read access for blobs only. ( under container > beside upload > click on change access level )
+> we can upload, modify or delete objects.
+
+Azure Storage Accounts - Access tiers :
+---------------------------------------
+
+> Blob storage pricing :
+	> Pricing is depends on  * Volume of data stored per month.
+							 * Quantity and types of operations performed, along with any transfer costs.
+							 * Data redundancy option selected.
+							 * Based on file structure (flat namespace).
+							 * data storage prices pay-as-you-go have different options like Premium, Hot, Cool, Archive.
+				Premium			Hot				Cool 			Archive
+				-------			---				----			-------
+1st 50TB/month	$0.15.GB		$0.0184/GB		$0.01/GB		$0.00099/GB
+Next 450T/m		$0.15.GB		$0.0177/GB		$0.01/GB		$0.00099/GB
+Over 500T/m		$0.15.GB		$0.0170/GB		$0.01/GB		$0.00099/GB
+
+> There is a cost for storing objects.
+> There is a cost for accessing objects.
+> Companies might store millions of objects in a storage account.
+> Use case : Initial there could be some objects that are accessed quite frequently. Then after some time, may be a week or two, those objects are accessed less frequently.
+	can company save on costs when it comes to less frequentlyaccessed objects. 
+> An object can be set to a particular tier.
+> Hot Access tier : This is optimized for objects accessed more frequently. ( here you have storage costs and lower access costs )
+> Cool Access tier : This is optimized for objects accesed or modified less frequently. ( here you have less storage costs and high access costs )
+		( Here data need to be stored for at least 30 days )
+> Archive Acces tier : Good for longterm backups. ( here you have lower storage costs and very higher access costs ).
+		( Here the data need to be stored for at least 180 days )
+> We can set the hot and cool access tier at the storage account level.
+> We can set the hot, cool and archive access tier at the blob level.
+
+
+
+
 
 
 
