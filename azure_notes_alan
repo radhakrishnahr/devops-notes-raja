@@ -217,7 +217,7 @@ Azure Storage Accounts - Access tiers :
 							 * data storage prices pay-as-you-go have different options like Premium, Hot, Cool, Archive.
 				Premium			Hot				Cool 			Archive
 				-------			---				----			-------
-1st 50TB/month	$0.15.GB		$0.0184/GB		$0.01/GB		$0.00099/GB
+1st 50TB/month		$0.15.GB		$0.0184/GB		$0.01/GB		$0.00099/GB
 Next 450T/m		$0.15.GB		$0.0177/GB		$0.01/GB		$0.00099/GB
 Over 500T/m		$0.15.GB		$0.0170/GB		$0.01/GB		$0.00099/GB
 
@@ -234,6 +234,110 @@ Over 500T/m		$0.15.GB		$0.0170/GB		$0.01/GB		$0.00099/GB
 		( Here the data need to be stored for at least 180 days )
 > We can set the hot and cool access tier at the storage account level.
 > We can set the hot, cool and archive access tier at the blob level.
+> By default blob storage will be in hot access tier.
+> From container configuration, we can change access tier hot or cool.
+> from each object also we can change tier to any.
+> If the object is in archive access tier, there is no option to download the object.
+> for cool access tier, we are to download and access the object.
+> If we want to access archive object, we need to rehydrate the object to cool or hot with rehydrate priority. This will be standard or high.
+> For standard rehydrate priority, archive object will take take several hours to complete conversion from archive to hot/cool.
+> It will charge for some price for conversion.
+
+Azure storage accounts -  Data redundancy :
+-------------------------------------------
+
+> When we creating storage account, we can see option to set the redundancy. want
+> We have different types of redundancies : Locally-redundant storage(LRS), Geo-redundant storage (GRS), Zone-redundant storage (ZRS), Geo-Zone-redundant storage (GZRS)
+> Locally-redundant storage(LRS) : 3 copies of your data are made in one data center to prevent any sudden server failures in the data center.
+> Zone-redundant storage (ZRS) : This helps to protect againest data center level failures. here data replicated sync'ly across three azure availability
+> Geo-redundant storage (GRS) : For higher data redundancy, 3 copies of data is replicated in current datacenter using LRS and also in another region using LRS.
+> Read access Geo-redundant storage : 
+> Geo-Zone-redundant storage (GZRS) : For higher data redundancy, 3 copies of data replicated over the 3 availabilityzones of two different regions.
+> Read only Geo-Zone-redundant storage :
+
+> Azure file shares :
+---------------------
+> With in storage account, we can see option to create file shares.
+> once file shares is created we can upload file with in the file share.
+> For each file share we can connect using connect option and copy the powershell script from your local machine.
+> Then it will create a z: directory under that we can see our file and also we can add some other files in that z: directory.
+> To remove that z: directory, we need to execute powershell command : net use z:\ /delete
+
+> Azure File Sync service :
+---------------------------
+> Using this service we can use on-premesis windows server which stores azure cloud file shares in the cache memory to quick access of the files to the users.
+> Here one of the steps is to download and install the azure file sync agent on the wondows server.
+
+> Azure Queue storage :
+-----------------------
+> It is a simple messaging service. we can keep messages in the queue.
+> Storage account > queues > create > Add messages and dequeue messages
+
+> Azure table storage : 
+-----------------------
+
+> used to store non-relational structured data. (nosql database)
+> storage account > tables > create table
+> to add table, storage account > storage browser > tables > click on the table > add entity [ we can add property name, type and value ]
+> Inside the table, first two properties are PartitionKey and RowKey.
+> PartitionKey and RowKey are helps to search for the particular property in the table.
+
+Azure Premium storage accounts :
+--------------------------------
+> Premium block blobs :
+-----------------------
+	> This is used when you need high performance when it comes to storage and access to data.
+	> Here the data in the background is stored on solid-state drives. These are optimized for low latency.
+	> Here the file transfer is alos much faster.
+	> Workloads : Straming, Machine learning.
+	> You have higher storage costs but lower transaction costs.
+	> Data redundancy may be LRS or ZRS.
+	> There is no option to set access tiers.
+> Premium File shares :
+	> Here again you get high performance and low latency
+	> Backend by solid-state drives for storage.
+	> Data redundancy may be LRS or ZRS.
+> when we are creating storage account, we need to choose Premium option, there we can choose Premium account type ( Bolck blobs, File shares and Page blobs )
+> Page blobs are normally we store virtual hard disk files that are linked to the VMs. Page blobs are best for random read write operations.
+> We can see options like containers, queues, tables, File shares under the premium storage account.
+
+Azure Storage explorer :
+------------------------
+
+> It is software tool ( SDK ) need to be install in our local machine to manage azure storage accounts under the local environment.
+
+Data migration to Azure :
+-------------------------
+
+> As per the azure documentation, we have many solutions to migrate on-premise server to the azure.
+> Using Azure Data Box, we can migrate tera bytes of data in or out to the azure account.
+
+AzCopy tool :
+-------------
+
+> It is a command line utility to copy blobs or files to or from a storage account.
+> download the utility > inside the path > execute azcopy command
+> azcopy make "https://appstore355456.blob.core.windows.net/tmp?<-shared-access-signature->" --> to create a container
+> azcopy copy service.yml "https://appstore355456.blob.core.windows.net/tmp/service.yml?<-shared-access-signature->" --> to upload a file
+
+Virtual Network Service Endpoints :
+-----------------------------------
+
+> This provide secure and direct connectivity to azure services over the azure backbone network.
+> step 1 : vnet > service endpoints > Add > Microsoft.Storage >  provide details and add
+  step 2 : Storage account ( same region ) > Networking > Firewalls and virtual networks > enabled from vnet and ip addresses and also add your client IP address ( Firewall ) > save.
+
+
+  
+
+
+
+									
+
+
+
+
+
 
 
 
