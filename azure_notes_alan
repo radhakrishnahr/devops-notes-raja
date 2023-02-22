@@ -328,7 +328,154 @@ Virtual Network Service Endpoints :
   step 2 : Storage account ( same region ) > Networking > Firewalls and virtual networks > enabled from vnet and ip addresses and also add your client IP address ( Firewall ) > save.
 
 
-  
+  Introduction to the Azure data base services :
+==============================================
+
+Azure SQL Database service :
+============================
+
+> PaaS
+> The underlined compute infrastructure and the backups are managed by Azure.
+> We'll built-in high availability.
+> SQL Database > sub, rg, name, select a server [ create ] > configure [ service tier ( Basic, Premium, ... etc ) ] > Networking > Security > Tags > Review and create
+> We can see two resources : sql database and sql server
+> Open Microsoft SQL Server Management Studio tool in your local machine as administrator > provide credentials > and connect 
+> From azure portal, open your sql database > query editor > provide credentials and connect.
+> Add data from the tool, right click on our data base name and choose new query > we can execute sql commands.
+> We can delete our table by expanding our data base directory and right click on the table located inside the tables directory and delete the table.
+> Add data from the portal, After login to our database > we can see our query window which uses to execute sql querries
+> We can disconnect from the tool or azure portal.
+> query to create a table :
+CREATE TABLE Course
+(
+   CourseID int,
+   CourseName varchar(1000),
+   Rating numeric(2,1)
+)
+> query to insert data in the table :
+INSERT INTO Course(CourseID,CourseName,Rating) VALUES(1,'AZ-204 Developing Azure solutions',4.5)
+ 
+INSERT INTO Course(CourseID,CourseName,Rating) VALUES(2,'AZ-303 Architecting Azure solutions',4.6)
+ 
+INSERT INTO Course(CourseID,CourseName,Rating) VALUES(3,'DP-203 Azure Data Engineer',4.7)
+> Query to see the table
+SELECT * FROM Course
+
+Azure Database for MySQL :
+--------------------------
+
+> Open Azure Database for MySQL > Flexible server [ create ] > sub, rg, name, server name, region, MySQL version, workload type ( small , buisiness critical, dev ) > compute + storage ( configure --> to set size, compute, pricing ) > provide username and password > networking > security > tags > review and create
+> After creating this, we can see only one resource.
+> to connect to the server, we can download and install MySQL Workbench tool (free tool) > open > new MySQL > provide server information and credentials > ok
+> Create tables by executing following sql queries :
+create database appdb;
+
+use appdb;
+
+CREATE TABLE Customer(
+	Customerid VARCHAR(100),
+	CustomerName VARCHAR(100)
+);
+
+INSERT INTO Customer(Customerid,CustomerName) VALUES('C1','UserA');
+INSERT INTO Customer(Customerid,CustomerName) VALUES('C2','UserB');
+INSERT INTO Customer(Customerid,CustomerName) VALUES('C3','UserC');
+
+SELECT * from Customer;
+
+> we can delete all resources.
+
+Azure Database for PostgreSQL :
+-------------------------------
+> Open Azure Database for PostgreSQL > Flexible server [ create ] > sub, rg, name, server name, region, MySQL version, workload type ( small , buisiness critical, dev ) > compute + storage ( configure --> to set size, compute, pricing ) > provide username and password > networking > security > tags > review and create
+> To use this service, we need to use Azure Data Studio tool > Open > install PostgresSQL > connections > new connection > provide server information and credentials > connect
+> New query > execute queries
+create database appdb;
+
+CREATE TABLE Customer(
+	Customerid VARCHAR(100),
+	CustomerName VARCHAR(100)
+);
+
+INSERT INTO Customer(Customerid,CustomerName) VALUES('C1','UserA');
+INSERT INTO Customer(Customerid,CustomerName) VALUES('C2','UserB');
+INSERT INTO Customer(Customerid,CustomerName) VALUES('C3','UserC');
+
+SELECT * from Customer;
+
+> We can delete our database.
+
+Enterprise Data Warehouse Architecture :
+----------------------------------------
+
+> e-commerce example : To manage the lots of unstructured data from so many sources Ingest services such as Azure Synapse Pipelines and Azure Data Factory takes data
+	from the different sources and stores the data using Azure Data Lake Gen2 storage accounts and prepare and train the data using Azure synapse apache spark and Azure Databricks we can host the data in Azure synapse dedicated SQL Pool.
+
+> creating azure data lake through storage account : Create storage account ( enable data lake in advanced tab ) -> Using monitor service > Activity log > download csv -> upload this file in a contianer
+> creating synopse workspace : open azure synapse analytics > create > ..workspace name ( unique ), storage account name, file system name > security ( provide creds to the sql server ) > networking > tags > review and create
+> go to the synapse workspace > sql pools > New > additional settings > tags > review and creat.
+> connect to the dedicated sql pool using sql server management studio tool > we can see our sql pool by expanding databases directory.
+> open synapse workspace > open synapse studio from azure portal > click on Data > SQL database > we can see our sqlpool > Tables 
+																 > Integrate > create pipeline
+																			 > copy data tool > next > select azure datalake storga gen2 > storage account name > create
+																							  > next > provide destination as your sql server > next > finish
+> After data warehousing lab clean up your resources.
+
+Azure Cosmos DB :
+-----------------
+
+> Fully managed NoSQL DB (serverless)
+> You get single digit milli second reposponse times.
+> scales automatically based on demand.
+> Based api of different db's, we can migrate accordingly using azure cosmos db.  ex : sql api, MongoDB, Gremlin, Cassandra, Table.
+> cosmos db > for NoSQL > ... > review and create
+> cosmos db > database account > database > container > items > provide partition key and create.
+> click on db > items > add items using json format > save 
+> we can perform crud operations.
+{
+"customerid":"C1",
+"customername":"UserA",
+"customercity":"Chicago"
+}
+
+{
+"customerid":"C2",
+"customername":"UserB",
+"customercity":"Chicago"
+}
+
+{
+"customerid":"C3",
+"customername":"UserC",
+"customercity":"New York"
+}
+
+Azure SQL Database vs Azure Cosmos DB :
+---------------------------------------
+
+> When you need to have relationaships between tables and when you want to have constraints like foreign key containts then we use Azure SQL Database service
+> Cosomos DB is fully managed NoSQL DB. We can use flexible schemas and no need of joins between data structures
+
+Azure DataBricks :
+------------------
+
+> Data Bricks > create workspace > ... 
+> open workspace > launch workspace > sign in 
+> create a cluster ( used to analyse the data )
+> storage account should be in place for data lake.
+> create notebook > python code > run
+blob_account_name = "datalake100299"
+accountkey="W2ucVHdKQn4RZwqBu+H9TKa0bnpYK00BINXOwnviJZXNzwHa9Df7R7TuJ09Vcmznpu9EYclJbEX6eO50pkpdYQ=="
+wasbs_path = "wasbs://data@datalake100299.blob.core.windows.net"
+fullname = "fs.azure.account.key." +blob_account_name+ ".blob.core.windows.net"
+ 
+dbutils.fs.mount(
+  source = wasbs_path,
+  mount_point ="/mnt/data",
+  extra_configs = {fullname : accountkey})
+ 
+ds = spark.read.csv("/mnt/data/Log.csv")
+display(ds)
 
 
 
