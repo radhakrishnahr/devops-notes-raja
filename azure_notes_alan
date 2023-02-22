@@ -477,6 +477,75 @@ dbutils.fs.mount(
 ds = spark.read.csv("/mnt/data/Log.csv")
 display(ds)
 
+Azure Cloud Concepts :
+======================
+
+High Availability : 
+-------------------
+
+> App --> VM ( OS Disk and Data Disk )  [ service level agreement ] ( if failure )
+> App --> VM VM VM ( Availability set or Availability zone )
+> Storage Accounts --> zone-redundant storage or Geo-redundant storage
+
+Scalibility :
+-------------
+
+> We have virtual machine scale set service. which uses to provision or deprovision our VMs based on the demand.
+> We don't need to worry about underlined storage of storage account. It automatically scales based on demand.
+
+Disaster recovery :
+-------------------
+
+> We can protect our data in case of any disasters by using availability set, availability zones.
+> For storage accounts, we need to use Geo-redundant storage.
+> cost analysis : quick switch over from primary to secondary region, additional cost based on cost benfit analysis based on what will be loss for the down time of the application versus having that duplicate infrastructure is running on the secondary region.
+
+Elasticity :
+------------
+
+> The ability to grow or shrink resources automatically as part of cloud platform
+> Ex : for vm, we can resize the vm
+
+Fault tolerance :
+-----------------
+
+> Suppose any fault ( error ) occurs for a high available application, it breaks our application. At this time fault tolerance is the ability to quickly revert back of your application.
+> If fault occurs in a data center level, then your application will run from another availability zone.
+> For Storage accounts, we have zone/geo redundant storage options.
+
+Cloud Service Model :
+---------------------
+
+> IaaS : Ex : VM -> infra provided by cloud and managed by user. ( Admins )
+> PaaS : Ex : Azure SQL Database -> underlined infrastructure and os is managed by azure and software can be managed by user. ( Developers )
+> SaaS : Ex : Microsoft Office 365 -> Underlined infrastructure and the software is managed by azure. End user use the application ( End users )
+
+Cloud Model types :
+-------------------
+
+> Public Cloud : Cloud can be used be any one.
+> Private Cloud : Cloud can you used by particular organization.
+> Hybrid Cloud : Based on requirement we can use public cloud and private cloud.
+
+Economies of scale :
+--------------------
+
+> Basics : This is the ability to carry out taks more efficiently or at a lower-cost per unit when operating at a large scale.
+> discounts : When the demand increases, cloud provides can then get hardware at discount prices.
+> Benfit : This becomes a benfit to the customer wherein the discounts can be passed to the customer.
+> service cost : If the number of customers increase the chances of services costs can go down.
+> Captital Expenditure ( CapEx ) : This is when you pay money upfront [ one time investment ]( buying building, servers, storage, software liecences )
+> Operational Expenditure ( OpEx ) : Ongoing money spent on services ( Human Resources, Maintenance, software support, data center costs - cooling )
+
+Shared Responsibility Model :
+-----------------------------
+
+> Division of responsibility :
+		> On-prem : Everything can be resposible for you.
+		> IaaS : Physical hosts, network, data center has responsibility of cloud. Remaining things has responsibility of user.
+		> PaaS : In addition with IaaS, Azure has shared responsibility in Identity and directory infrastructure, applications, network controls with user.
+		> SaaS : User is reponsible for Information and data, devices, accounts and identities. Azure had shared responsibility with Identity and directory infrastructure.
+
 
 
 									
