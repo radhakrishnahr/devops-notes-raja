@@ -546,6 +546,99 @@ Shared Responsibility Model :
 		> PaaS : In addition with IaaS, Azure has shared responsibility in Identity and directory infrastructure, applications, network controls with user.
 		> SaaS : User is reponsible for Information and data, devices, accounts and identities. Azure had shared responsibility with Identity and directory infrastructure.
 
+Azure Traffic Manager Profile :
+===============================
+
+> It is a global service ( not specific to region ).This is a DNS-based traffic load balancer.
+> You can distribute traffic to public facing applications across different azure regions.
+> You can direct traffic based on different routing methods.
+> Priority routing method : It routes the traffic of your web app running at particular region. If your web app is down, then traffic manager routes traffic to its duplicate copy of web app running at another region.
+> Weighted traffic manager : Suppose your web app is running in different regions. It routes 50% of traffic to the both regions.
+> Open Azure traffic manager profile > create > add endpoints > configure settings > Take DNS of the traffic manager profile and test it in the browser.
+
+Azure Content Delivery Network ( Front Door and CDN profiles ) :
+=======================================
+
+> Helps to deliver content to users across the globe by placing content on physical nodes across the world.
+> Suppose our web app is running on east-us and if users are trying to access the web app from the different regions, usually it requires access time to get that web app from one region to another region to the user. To avoid this access time, we can use azure cdn  service.
+> By creating CDN Profile we can avoid access time. It is a global level endpoint.
+
+workflow of the azure CDN service :
+-----------------------------------
+
+1. The user in the east us location makes a request to the CDN endpoint.
+2. The CDN checks whether the Point of presence location closest to the user has the requirested file.
+3. If not a request is made to the source to get the required file.
+4. A server in the Point of presence location will then cache the required file.
+5. The server will also send the file to the user.
+6. subsequent users from the same location will now be served the file from the server in the point of presence location.
+
+Azure DevOps services :
+=======================
+
+> uses to collaborate Dev and Ops teams ( plan,code,build,test,release,deploy, operate, monitor )
+> Automation is a key aspect
+> Adoption of the right tools
+> Azure Devops services are : Azure Boards, Azure Pipelines, Azure Repos, Azure Test Plans, Azure Artifacts, Extensions Marketplace.
+> Open Azure DevOps > create a organization > create a project > Advanced > git, agile
+> Azure Boards : Used to manage agile flow of the project. it has boards, backlogs, sprints, queries and delivery plans etc.
+> Azure Repos : This service is helpful manage your source code repositories such as git etc. we can set our own git respository to manage our source code.
+> Azure pipelines :
+	1. Build pipeline : We can build pipeline by setting up your github reposity and configure and review yaml file and run your job.
+	2. Release pipeline : Releases > new pipeline > add artifacts > Add stages > save and run.
+	
+Azure DevTest Labs :
+====================
+
+> By using this service, we can setting up a dev test lab with vm's with required artifacts. 
+
+Creating a Machine learning workspace :
+=======================================
+
+> create a Machine Learning service > along with this service it creates storage account, key vault, application insights, container registry services > Next Next Review and create.
+> Launch studio 
+> we can create our machine learning project on the canvas [ by drag and drop various steps to our project ]
+> create a compute cluster and run your machine learning project on top of it.
+
+Azure Congnitive services :
+===========================
+
+> Provides AI services in different categories such as speech, language, vision, decision, OpenAI service etc.
+
+Azure Bot Service :
+===================
+
+> Using Bot SDK we can develop our own Bot service using any of the language [ c#, java, javascript or python ].
+> download BotFrameworkEmulator from official source.
+> install bot templates and reuse templates in your project to create your own Bot.
+
+Azure Key Vault :
+=================
+
+> This service is uses to store our secrets, certificates, keys.
+
+Azure Logic Apps :
+==================
+
+> This provides a cloud platform where you can create and run automated workflows.
+> You don't need to well versed in code to implement there workflow.
+> You can set trigger for the workflow.
+> You can set various actions in the workflow and trigger the actions.
+
+Azure IoT Lab :
+===============
+
+> This is a managed service that can be used as a central message hub for bi-directional communication between managed devices and an IoT application.
+> The IoT hub supports communication both from the device to the cloud and from the cloud to the device.
+> The IoT hub also gives a secure communication channel for devices to send data.
+> Use case : Azure IoT service takes data from the IoT devices and forward to the Azure SQL database through the Azure Stream Analytics service.
+
+Azure Batch Service :
+=====================
+
+> This service is used to run large-scale parallel and high performance computing batch jobs.
+> This service manages the pool of VM's running your application.
+> There is no additional cost for this service. You are only charged for the compute service.
 
 
 									
