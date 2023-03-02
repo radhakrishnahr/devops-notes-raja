@@ -640,6 +640,306 @@ Azure Batch Service :
 > This service manages the pool of VM's running your application.
 > There is no additional cost for this service. You are only charged for the compute service.
 
+Azure Active Directory :
+========================
+
+> It is an Identity provider.
+> As part of the AD we can define multiple users and set permissions to the users.
+> We can also define Application objects which can be map to the application and set permissions to the azure resources to that application.
+> step1 : user authentication
+> step2 : Authorizations ( Grant permission to access the resource )
+> We can grant permissions using role based access control.
+> The default user is linked to our subscription with administrator access.
+> AD pricing : free, Office 365 apps, Premium P1, Premium P2
+> Users are also called as identities.
+
+
+creating a user in AD :
+-----------------------
+
+> open AD service > Users > New User > create user / invite user > provide info > create
+> Click on the user > copy user principle name
+> In another incognito window, we login to the azure portal using user principle name.
+
+Role based access control :
+---------------------------
+
+> We can set permissions to the subscription level, all resources, resource groups, or to a particular azure resource.
+> From the azure resource we can set permissions :
+	> Open your azure service ( Ex : VM ) > open Access Control ( IAM ) > click on Add ( role assignment ) > choose required roles > assign to the users, groups or service principals > next > review and create.
+	
+Azure AD Groups :
+-----------------	
+
+> If we want users are part of any group, we can create groups and assign permissions to the groups as well.
+> Open AD > Groups > New Group > name and add members > create.
+> We can add and remove users from the group.
+> nesting groups is not possible.
+> If we delete the group, It will not affect on the User.
+> We can assign permissions to any azure resource ( using IAM of resource ) from the group.
+
+Multi-Factor Authentication :
+-----------------------------
+
+> To authenticate to the azure account, usually we require credentials. But, increase the security to the azure account we use multi factor authentication.
+> It is a additional layer of security.
+> Open AD > User > click on ... and select per-user MFA > select user and enable MFA.
+> user required to register for the MFA code using using MS authenticator mobile app or phone.
+
+Azure AD Premium Trail Licensing :
+----------------------------------
+
+> open AD > licenses > try/buy > Azure AD Premium P2 ( free trail 30 days with 100 licenses )
+> If you want to continue to this service, upgrade to the paid version.
+> Azure AD Premium P2 --> $9/month
+> Azure AD Premium P1 --> $6/month
+
+Conditional access policies :
+-----------------------------
+
+> open AD > ( applicable for Azure AD Premium P2 license) security > conditional access > new policy > name, assign to user or group or cloud app / actions, conditions, access control ( grant access ) > enable policy and create.
+
+Passwordless Authentication options for Azure AD :
+--------------------------------------------------
+
+> Biometric mechanism
+> MS Authenticator App
+
+Azure AD - External IDentities :
+--------------------------------
+
+> We can create/invite external user from another organization ( different account ) as a contractor or contributor.
+> Open AD > Users > New user > New external user > Invite
+> We can assisn roles using IAM of azure resource to the External user.
+
+Hybrid Environments - Identities :
+----------------------------------
+
+> Microsoft AD is manages users in the onpremesis server while azure AD manages users in the azure cloud subscription and manages ms apps ( 365 ).
+> Azure AD connect is a service uses to synchronise users from onpremises environment to the cloud.
+> Azure AD Domain services : This gives you the option of hosting the full version of Microsoft AD as a managed software on the cloud. You get the options of domain join, group policy, lightweight directory access protocol and Kerberos/NTLM authentication.
+
+Microsoft Defender for Cloud :
+------------------------------
+
+> Using this service, we will get recommendations to secure our azure account.
+> Using Secure score, we can analyse security level of our azure account.
+> free and paid versions are available. paid version provides much more options to provide security to our azure account.
+> We can also provide security to the resources deployed by other cloud providers such as aws, gcp.
+> Under recommendations, we can see recommendations.
+> Environment settings >click on your subscription > defender plans ( Here we can enable defender plan for certain services ( it will charge ).
+> Your company is planning on using the Microsoft Defender for Cloud service. Can you view the regulatory compliance of your Azure resources in Azure Security Center? Yes
+
+
+Microsoft Sentinel :
+--------------------
+
+> This service is used for security informaton ,event management, security orchestration, automation and response.
+> vm ,azure activity log and Azure active directory sign-ins->log analytics workspace->Microsoft sentinel (enable) [ it collects data ,detects threats and respond and investigate threats ]
+> create log analytics workspace > create Microsoft Sentinel and add the log analytics workspace 
+> Open Microsoft Sentinel > open data connectors which collects data from azure and third party services > Using Analytics, we can detect threats by using default rules or we can define rules.
+
+
+Azure DDoS (Distributed Denial of Service) Protection :
+-------------------------------------------------------
+
+> This service helps us to protect from DDoS attacks.
+> DDoS is unwantedly increasing the traffic to your application by melicious users. They tries to down your application.
+> DDoS attack will result performance issues of your application.
+
+
+Azure Firewall :
+----------------
+
+> Has built-in high availability
+> can deploy the azure firewall instance across two or more availabilityzones - 99.99% SLA
+> You can also create network filtering rules - based on source and destination IP address. port and protocol.
+> It is stateful in nature. so it understands what packets of data to allow.
+> It has built-in treat intelligence -  here you can get alerts or deny traffic from / to malicious IP addresses and domains.
+> when we are launching vm we need to create a AzureFirewallSubnet with in a vnet.
+> create Azure fire wall serivce
+> open firewall manager > policy > we can set rules ( DNAT, Network, Application )
+> It costs per hour.
+
+Concept of zero trust :
+-----------------------
+
+> When user want to communicate with azure cloud resources from on-premises servers. There are some Foundation principles :
+	1. Verify explicitly -  Ensure to always authenticate and authorize users.
+	2. Use least access privileges wherever possible.
+	3. Assume breach -  Understand your surface area when it comes to threats, look at threat intelligence.
+> Secure Identities, Secure Endpoints, Secure Applications,Secure Data.
+
+Defence of Depth :
+------------------
+
+> We can be secure our data by deep
+
+> Security levels :
+	Physical security
+	Identity and access
+	Perimeter
+	Network
+	Compute
+	Application
+	Data
+	
+Pricing Calculator :
+--------------------
+
+> https://azure.microsoft.com/en-us/pricing/calculator/
+> Using pricing calculator, we can estimate azure resource cost per month.
+
+Total cost of ownership ( TCO ) calculator :
+-----------------------------------------------------
+
+> https://azure.microsoft.com/en-us/pricing/tco/calculator/
+> Uses to estimate the cost savings you can realize by migrating your workloads to Azure.
+
+Azure Cost Management :
+-----------------------
+
+> Subscriptions > we can see current cost and forecost bill as per our usage > If we click on cost analysis > we can see actual cost and forecast cost for the month > scroll down > you can see accumulated cost as per the resource, location and resource group
+> we can apply filters to see bill for the particular resource.
+
+An Example Invoice :
+--------------------
+
+> open Cost Management and Billing > invoices > open sample invoices
+> you can check cost per resource by scroll down
+> If you want to see detailed information, click on "Prepare Azure usage file" located on the top of same page > download and open the csv file and analyse your bill.
+> If you have any queries about your bill, you can contact support call with azure engineer and convey your explaination.
+
+Creating budgets in Azure :
+---------------------------
+
+> We can set threshold budget for month. so that we can control our billing per month.
+> subscription > Budgets > Add > name, period, budget amount, alert condition, create email address, create.
+> By creating budgets we can get notified once our bill is reached to the threshold. So that we can clean up our unnecessary resources of azure.
+
+Support options in Azure :
+--------------------------
+
+> If we encounters any issues, we can raise ticket at Help support.
+> Basic : for all azure customers. (no 24/7 support)
+> Developer : $29/month ( available during business hours only by email )
+> Standard : $100/month
+> Professional Direct : $1000/month ( Immediate support 24/7, with in hour they will respond )
+
+Azure Service Level Agreements :
+--------------------------------
+
+> https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services?lang=1
+> Read the SLA's to learn about azure uptime guarantees and downtime credit policies.
+> Monthly uptime % = ( Maximum Available Minutes-Downtime)/Maximum Available Minutes X 100
+
+Monthly uptime %	Service Credit
+================	==============
+< 99.99%				10%
+< 99%					25%
+< 95%					100%
+
+Business Metrics :
+------------------
+
+> https://learn.microsoft.com/en-us/azure/architecture/framework/resiliency/business-metrics
+> Usful for companies
+
+SLA	Downtime/week	downtime/month 	downtime/year
+--- -------------	--------------	-------------
+99%		1.68hours	7.2 hours		3.65 days
+99.9%	10.1minuts	43.2 minutes	8.76 hours
+99.95%	5minuts 	21.6minutes		4.38 hours
+99.99%	1.01minuts	4.32 minutes	52.56 minutes
+99.999%	6 seconds	25.9 seconds	5.26 minutes
+
+Services in Preview :
+---------------------
+
+> https://azure.microsoft.com/en-us/updates/
+> Azure updates : we can get the latest updates on azure products and features to meet your cloud investment needs. Subscibe to notifications to stay informed.
+> now avaiable, in preview and in development are statuses of new azure updates.
+> we can test latest azure service which has status of preview available. There are two types of previews : public and private
+> after taking preview azure will take feedback from the user.
+> Not provided SLA for the preview avaialable service.
+> https://azure.microsoft.com/en-gb/support/legal/preview-supplemental-terms/
+
+Cloud Adoption Framework :
+--------------------------
+
+> https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/
+> The Microsoft cloud adoption framework for azure is a full life cycle framework that enables cloud architects, IT professionals, and business decision makers to achieve their cloud adoption goals.
+> Life cycle :
+	Define stratedy (Business justification)
+	Plan ( Cloud adoption plan )
+	Ready ( Design area guidance )
+	Adopt ( migrate, modernize, innovate )
+	Secure 
+	Manage
+	Govern
+> https://learn.microsoft.com/en-us/assessments/
+
+Service Trust Portal :
+----------------------
+
+> https://servicetrust.microsoft.com/
+> Learn how microsoft cloud services protect your data, and how you can anage cloud data security and compliance for your organization.
+> we can see here various cerifications, regulations and standards of microsoft.
+> We can check documents of various standards or certifications or regulations of particular microsoft cloud service.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+									
+
+
+			
+
 
 									
 
