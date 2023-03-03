@@ -887,6 +887,128 @@ Service Trust Portal :
 > we can see here various cerifications, regulations and standards of microsoft.
 > We can check documents of various standards or certifications or regulations of particular microsoft cloud service.
 
+Resource tags :
+---------------
+
+> Basics: This is used to add metadata yo your resources.
+> Application: Tags can be applied to resources, resource groups and subscriptions.
+> Costing: Tags can offer another way when it comes to filtering on costs.
+> Inheritance: If a tag is applied at a resource group level, it is not applied to the resources in the reource groups.
+
+Management Groups :
+-------------------
+
+> When any company have multiple subscriptions, then company manages all subscriptions with the help of management groups.
+
+> Company can have multiple management groups under Tenant Root Group.
+
+> Role based access control is applicable for management groups
+
+> Azure policies are also applicable for Azure policies.
+
+Azure Blueprints :
+------------------
+
+> Used to orchestrate deployments of artifacts to Azure.
+
+> By creating, assigning and publishing Bluprints, we can deploy artifacts from ARM templates, Azure poilicies, Resource groups, RBAC to new azure subscription.
+
+Azure Policy :
+--------------
+
+> Using azure policies we can apply rules to our subscriptions.
+> we can create our own policies.
+> Default policies are also available.
+> we can assign policies management group level, subscription levele or resource group level.
+
+Azure resource locks :
+----------------------
+
+> It prvents accedental deletion / modification of our resource.
+> Ex : Open storage accounts > Locks ( Read only / Delete ) > Add Lock > Ok---> Then we can not modify our storage account if it is Ready only lock or we can not delete if it is Delete lock.
+
+
+Azure CLI :
+===========
+
+> It is command line utility to manage azure resources.
+> For this we need to install az cli tool in our machine ( Win/Linux/Mac ).
+> By running az cli commands we can manage azure resources easily.
+> Ex : to login to your account
+	az login --> it will prompr azure login page in the browser, we should pass our credentials. so that we are able to login to our azure portal via cli
+	
+	az group list --> it will show list of resource groups in json format
+
+Azure PowerShell and CloudShell :
+=================================
+
+> It is powerful tool to manage azure resources and other resources.
+> we need to install Azure  Az PowerShell module from The PowerShell Gallery. or we can use it from your azure portal.
+> shell.azure.com
+> When we open cloudshell for the first time, it creates storage account to store your files at particular region.
+> Once cloudshell is opened, you can switch to powershell or shell mode.
+> using cloudshell we can easily manages azure resources and also third party resources.
+
+ARM templates :
+===============
+
+> We can define infrastructure as code.
+> Create an Azure Resource Manager template.
+> This is a JavaScript Object Notation (JSON) file that actually contains the defination of the infrastructure.
+> You can store the ARM templates in your source code repository along with your application code.
+> Microsoft has also release a new language called Bicep that has the same capabilities as ARM templates.
+> Bicep just uses a syntax that is easier to use.
+> We can use Template deployment service / powershell / cloudshell / azure cli to deploy the ARM templates.
+
+Note on the Azure Arc resources :
+---------------------------------
+
+> This is centralized service, by using this service we can manage azure resources and on-premesis environment.
+
+Azure Advisor :
+---------------
+
+> This service gives us recommendations based on countries on Cost, Security, Reliability, Operational Excellence, Performance etc.
+
+
+Azure Service Health :
+----------------------
+
+> Open Help + support > click on Service Health
+> We can browse Service issues, Planned maintenence, Health advaisories, Health history [ > we can create service health alert ], Security advaisories, Resource Health etc.
+
+Azure Monitor service :
+-----------------------
+
+> We can monitor azure services and creates monitor alerts based on alert rules.
+> we can check metrics for the resources.
+> Ex: for vm, based on cpu utilization is goes beyond the threshold, it triggers the alert.
+
+Log Analytics :
+---------------
+
+> Using this service, we can collect data from any azure resource ( vm ) by using data collection rules in the log analytics workspace.
+> This service is centralized system to storing the logs.
+
+Application Insights :
+----------------------
+
+> Application Insights in an extension of Azure Monitor and provides application performance monitoring ( APM ) features. APM tools are useful to monitor applications from development, through test, and into production in the following ways :
+	1. Proactives understand how an application is performing.
+	2. Reactively review application execution data to determine the cause of an incident.
+
+Azure Government :
+------------------
+
+> US government agencies or their partners interested in cloud services that meet government security and compliance requirements, can be confident that Microsoft Azure Government provides world-class security and compliance.
+> https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-welcome
+> https://learn.microsoft.com/en-us/azure/china/overview-operations 
+
+Creating a new subscription :
+-----------------------------
+> Suppose company wants to isolate their prod subscription for other team, company can create another subscription and adds permissions to that Team.
+
+
 
 
 
