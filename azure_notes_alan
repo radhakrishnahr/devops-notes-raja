@@ -176,6 +176,7 @@ Azure virtual network peering :
 > for this you have to create a azure vnet peering connection.
 > We can peer from two different subscriptions and also we can peer from two different accounts.
 
+
 Introduction to Azure Storage :
 ===============================
 
@@ -217,7 +218,7 @@ Azure Storage Accounts - Access tiers :
 							 * data storage prices pay-as-you-go have different options like Premium, Hot, Cool, Archive.
 				Premium			Hot				Cool 			Archive
 				-------			---				----			-------
-1st 50TB/month		$0.15.GB		$0.0184/GB		$0.01/GB		$0.00099/GB
+1st 50TB/month	$0.15.GB		$0.0184/GB		$0.01/GB		$0.00099/GB
 Next 450T/m		$0.15.GB		$0.0177/GB		$0.01/GB		$0.00099/GB
 Over 500T/m		$0.15.GB		$0.0170/GB		$0.01/GB		$0.00099/GB
 
@@ -327,8 +328,7 @@ Virtual Network Service Endpoints :
 > step 1 : vnet > service endpoints > Add > Microsoft.Storage >  provide details and add
   step 2 : Storage account ( same region ) > Networking > Firewalls and virtual networks > enabled from vnet and ip addresses and also add your client IP address ( Firewall ) > save.
 
-
-  Introduction to the Azure data base services :
+Introduction to the Azure data base services :
 ==============================================
 
 Azure SQL Database service :
@@ -477,6 +477,7 @@ dbutils.fs.mount(
 ds = spark.read.csv("/mnt/data/Log.csv")
 display(ds)
 
+
 Azure Cloud Concepts :
 ======================
 
@@ -562,7 +563,6 @@ Azure Content Delivery Network ( Front Door and CDN profiles ) :
 > Helps to deliver content to users across the globe by placing content on physical nodes across the world.
 > Suppose our web app is running on east-us and if users are trying to access the web app from the different regions, usually it requires access time to get that web app from one region to another region to the user. To avoid this access time, we can use azure cdn  service.
 > By creating CDN Profile we can avoid access time. It is a global level endpoint.
-
 workflow of the azure CDN service :
 -----------------------------------
 
@@ -575,6 +575,7 @@ workflow of the azure CDN service :
 
 Azure DevOps services :
 =======================
+
 
 > uses to collaborate Dev and Ops teams ( plan,code,build,test,release,deploy, operate, monitor )
 > Automation is a key aspect
@@ -639,6 +640,7 @@ Azure Batch Service :
 > This service is used to run large-scale parallel and high performance computing batch jobs.
 > This service manages the pool of VM's running your application.
 > There is no additional cost for this service. You are only charged for the compute service.
+
 
 Azure Active Directory :
 ========================
@@ -1008,71 +1010,69 @@ Creating a new subscription :
 -----------------------------
 > Suppose company wants to isolate their prod subscription for other team, company can create another subscription and adds permissions to that Team.
 
+Understanding your requirements :
+=================================
 
+> You want to migrate some of the workloads onto Azure
+> Some workloads will continue to remain in the on remises data center
+> Applications in the on premises data center must be able to talk to application in Azure.
 
+Choose the right cloud model :
+------------------------------
 
+> need to understand what services required to migrate to azure from physical servers in the data center.
+> As per that, spin up IaaS such as vm's in the azure.
+> Suppose you have application/web servers are in on premises infrastructure, you can use PaaS service to deploy your azure web app in azure
+> If we have dedicated servers which performs backend tasks in an onpremises environment, then we can use serverless services in azure to save cost which runs your script in underlined azure servers using azure functions.
+> Benfits are -  No CapEx
+			  -  Pay as you model - metered pricing
 
+Storing your Documents :
+------------------------
 
+> Suppose, we have separate physical servers are presented to store documents which can we easily migrate using IaaS such as VM's or Azure storage accounts.
 
+Understanding Costs :
+---------------------
 
+> Billing will be charged for each subsciption.
+> If we want to isolate billing for different teams, we can use different suscription for each team.
+> we can also filter billing using Resource tags. 
+> use pricing calculator we can estimate tyhe cost.
+> Suppose you have microsoft license for the onpremises servers, you can continue same license in azure by using azure hybrid benefit service.
+> support plan is very important it is separate cost.
 
+High Availability :
+-------------------
 
+> In Azure, most of the services have SLA in place. it indicates service uptime.
+> Azure is providing SLA - 99.95% ( not for free/Shared plans )
+> Availability sets and Availability zones - protects against data center level failure.
+> These will not protect against region level failures.
 
 
+Elasticity :
+------------
 
+> based on demand, ability to scale up or down our azure resources or size of the azure resources.
+> Ex : VM scale set increase /  decrease vm's as per the demand.
+> Azure Load balancer is uses to route the traffic to vm scale set.
 
+Connecting data center to Azure :
+---------------------------------
 
+> Connecting your networks together (on premises and azure vnet ) by using site to site VPN connection.
+> Another way is to use ExpressRoute connection between your on premesis data center and your azure vnet. It is little expenssive than site-to-site VPN connection.
 
+The User Identities :
+---------------------
 
+> Microsoft AD store identities in onpremesis data center.
+> Using Azure AD Connect service to synchronise user from Microsoft AD to Azure AD.
 
+Monitoring your Infrastructure :
+--------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-									
-
-
-			
-
-
-									
-
-
-
-
-
-
-
-
-
-
-
-
+> We can use Azure Monitor tool to monitor metrics ( graphs ) of azure resources such as vm, sql db etc.
+> We can also set alerts when resource usage is reaches to its threshold.
+> We use azure log analytics service to store centralized logs in SCM from the azure resources through azure monitor service.
