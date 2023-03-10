@@ -8,13 +8,13 @@
 
 	- A VM that performs a particular function such as running a firewall is also called virtual appliance. (yes)
 
-	- A user-defined route (UDR) can only control network traffic between subnets of asi virtual network. (yes/no)
+	- A user-defined route (UDR) can only control network traffic between subnets of asi virtual network. (no)
 	
 3. state yes / no :
 
 	- cloud computing provides elastic scalability - yes
 	- customers can minimize capex by using a public cloud - yes
-	- cloud computing leverages virtualization to provide services to multiple customers simulataneously - yes/no
+	- cloud computing leverages virtualization to provide services to multiple customers simulataneously - no
 	
 4. you have to host two apps app1 and app2
 		requirements :
@@ -23,7 +23,7 @@
 			- app2 must run interactively with the os of the system
 			
 		app1 ( Iaas || PaaS || SaaS ) PaaS
-		app1 ( Iaas || PaaS || SaaS ) Iaas
+		app2 ( Iaas || PaaS || SaaS ) Iaas
 
 5. Which term represents the ability to increase the computing capacity of a VM by adding memory or CPUs ?
 	(a) vertical scaling		b. horizontal scaling	c. agility		d. elasticity
@@ -48,7 +48,7 @@
 	- Monthly salaries for technical personal are an example of opex costs - Yes
 	- Leasing software is an example of opex costs - yes
 	
-10. You plan to extend your company's network to azure. the nw contains a vpnappliance that use an Ip address of 131.107.200.1
+10. You plan to extend your company's network to azure. the nw contains a vpn appliance that use an Ip address of 131.107.200.1
 	You need to create an azure resource that defines the vpn appliance in azure.
 	Which azure resource should you create ? to answer, select the appropriate resource in the answer area
 	
@@ -70,11 +70,11 @@
 	SSO -> The ability to use same creds to access multiple resources and apps from different.
 	
 13. Azure blob storage is a ____________
-	Ans : srotage service  oprimized  for very large objects , such as video files and bitmaps
+	Ans : srotage service  optimized  for very large objects , such as video files and bitmaps
 	
 14. True/ False 
-	North America is represented by single azure region (T)
-	Every azure region has multiple data centers (F)
+	North America is represented by single azure region (F)
+	Every azure region has multiple data centers (T)
 	Data transfers between azure services located in different azure regions are always free (F)
 	
 15. True/False 
@@ -83,11 +83,11 @@
 	An azure storage account can contain only up to 2 TB of data and up to one million files. (F)
 	
 16 True/False
-	An azure virtual desktop session host  can run win 10 or win 11 only . (T)
+	An azure virtual desktop session host can run win 10 or win 11 only . (T)
 	An azure virtual desktop host pool that includes 20 session host support a maximum of 20 simultaneous user connections (F) *
-	Azure virtual desktop  supports  desktop and app virtualization (T)
+	Azure virtual desktop supports desktop and app virtualization (T)
 	
-17. to implement an azure mfa solution, you must sync onprems identities to the cloud (T)
+17. to implement an azure mfa solution, you must sync onprems identities to the cloud (F)
 	Two valid methods for azure mfa are picture identification and a passport number (F)
 	Azure mfa can be required for administrative and non-administrative user accounts (T)
 	
@@ -109,10 +109,10 @@
 	copying 10gb of data to azure from an onprem nw over a vpn generates additional azure data transfer costs. (F)
 	copying 10gb of data from azure to an onprem nw over a vpn generates additional azure data transfer costs. (T)
 	
-22. what can you use to automatically d=send an alert if an administrator stops an azure vm ?
+22. what can you use to automatically send an alert if an administrator stops an azure vm ?
 	azure monitor (X)
 
-23. azure advisor provides recommendations on how to improve the securoty of an azure ad environment. (F)
+23. azure advisor provides recommendations on how to improve the security of an azure ad environment. (F)
 	azure advisor provides recommendations on how to reduce the cost of running azure vm's (T)
 	azure advisor provides recommendations on how to configure the nw settings on az vm's. (F)
 
@@ -139,14 +139,9 @@
 29. What additional resource is required by an azure vm ? A public IP addr (X) *
 
 30. your company hosts an accounting application named app1 that is used by all the customers of the company.
-	app1 has low usage during the first three wekks of each month and very high usage during the last week of each month.
+	app1 has low usage during the first three weeks of each month and very high usage during the last week of each month.
 	which benfit of azure cloud services supports costs management for this type of usage pattern ?
 	Ans : elasicity.
 	
-31. If an azure vm has a status of stopped (deallocated), you will continue to pay for "storage".
-
-32. what should you use to evaluate whether your company's azure environment meets regulatory requirements ?
-	Ans : Microsoft defender for cloud
-	
-	
-	
+31. If an azure vm has a status of stopped (deallocated), you will continue to pay for ______________
+	Ans : storage
