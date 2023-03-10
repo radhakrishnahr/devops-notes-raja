@@ -1,0 +1,152 @@
+1. What should you use to evaluate whether your company's Azure environment meets regulatory requirements? 
+
+	Microsoft Defender for Cloud 
+
+2. state yes / no :
+
+	- Network security groups (NSGs) can contain multiple inbound and out (yes)
+
+	- A VM that performs a particular function such as running a firewall is also called virtual appliance. (yes)
+
+	- A user-defined route (UDR) can only control network traffic between subnets of asi virtual network. (yes/no)
+	
+3. state yes / no :
+
+	- cloud computing provides elastic scalability - yes
+	- customers can minimize capex by using a public cloud - yes
+	- cloud computing leverages virtualization to provide services to multiple customers simulataneously - yes/no
+	
+4. you have to host two apps app1 and app2
+		requirements :
+			- you must able to modify the code of app1
+			- administrative effort to manage the os of app1 must be minimized
+			- app2 must run interactively with the os of the system
+			
+		app1 ( Iaas || PaaS || SaaS ) PaaS
+		app1 ( Iaas || PaaS || SaaS ) Iaas
+
+5. Which term represents the ability to increase the computing capacity of a VM by adding memory or CPUs ?
+	(a) vertical scaling		b. horizontal scaling	c. agility		d. elasticity
+	
+6. select the answer that correcly completes the sentance.
+
+	Azure Site Recovery provides____________ for vm's. ( fault tolerance/disaster recovery/elasticity/high availability) [Ans : resilience and disaster recovery]
+	
+7. yes/no :
+	with SaaS, you must apply software updates. - No
+	with IaaS, you must install the software that you want to use - yes
+	Azure Backup is an example of PaaS - Yes
+	
+8. What are two benefits of cloud computing ? each correct answer presents a complete solution.
+	- enables the rapid provisioning of resources (X)
+	- has increased administrative complexity
+	- has the same configuration option as on-premises
+	- shifts capex to opex (X)
+	
+9. yes/no :
+	- building a data center infra is an example of opex costs -  No
+	- Monthly salaries for technical personal are an example of opex costs - Yes
+	- Leasing software is an example of opex costs - yes
+	
+10. You plan to extend your company's network to azure. the nw contains a vpnappliance that use an Ip address of 131.107.200.1
+	You need to create an azure resource that defines the vpn appliance in azure.
+	Which azure resource should you create ? to answer, select the appropriate resource in the answer area
+	
+	local network gateways (X)
+	virtual network gateways
+	on-premises data gateways
+	azure data box gateways
+	azure stack edge/data box gateway
+	web application firewall policies (WAF)
+
+11. true / false 
+	> AZ's can be implemented in all azure regions (F)
+	> Only vm's that run  windows server  can be created in az's (F)
+	> az's are used to replicate data and applications to multiple regions (F)
+	
+12. match the following :
+	authorization -> The process of identifiing the access level of a user or service.
+	MFA -> Requires several elements  to identify a user or service.
+	SSO -> The ability to use same creds to access multiple resources and apps from different.
+	
+13. Azure blob storage is a ____________
+	Ans : srotage service  oprimized  for very large objects , such as video files and bitmaps
+	
+14. True/ False 
+	North America is represented by single azure region (T)
+	Every azure region has multiple data centers (F)
+	Data transfers between azure services located in different azure regions are always free (F)
+	
+15. True/False 
+	Data that is stored in azure storage account  automaticqlly has atleast three copies (T)
+	All data that is copied to  an azure storage account is backed up automaticqlly to another azure data center (F)
+	An azure storage account can contain only up to 2 TB of data and up to one million files. (F)
+	
+16 True/False
+	An azure virtual desktop session host  can run win 10 or win 11 only . (T)
+	An azure virtual desktop host pool that includes 20 session host support a maximum of 20 simultaneous user connections (F) *
+	Azure virtual desktop  supports  desktop and app virtualization (T)
+	
+17. to implement an azure mfa solution, you must sync onprems identities to the cloud (T)
+	Two valid methods for azure mfa are picture identification and a passport number (F)
+	Azure mfa can be required for administrative and non-administrative user accounts (T)
+	
+18. you plan to collect and analyze event details for five azure vm'salaries
+	you need to run queries to compare the event details collected from all the vm's.
+	which two tools should you use ?
+	Azure advisor		azure monitor (X)		azure service bus		log analytics (X)		azure service health
+	
+19. "Microsoft Purview compliance portal" provides in-depth information about security, privacy, compliance offerings, and featres across microsoft cloud products.
+
+20. your company has several business units
+	each business unit requires 20 different azure resources for daily operation. all the business unit requires the same types of azure resources.
+	you need to recommend a solution to accomdate the creation of the azure resources.
+	what should you include the recommendations ?
+	
+	management groups 		ARM templates(X) 		the azure api management service		virtual machine scale sets.
+	
+21. Adding rg's in an azure subscription generates addtional costs (F)
+	copying 10gb of data to azure from an onprem nw over a vpn generates additional azure data transfer costs. (F)
+	copying 10gb of data from azure to an onprem nw over a vpn generates additional azure data transfer costs. (T)
+	
+22. what can you use to automatically d=send an alert if an administrator stops an azure vm ?
+	azure monitor (X)
+
+23. azure advisor provides recommendations on how to improve the securoty of an azure ad environment. (F)
+	azure advisor provides recommendations on how to reduce the cost of running azure vm's (T)
+	azure advisor provides recommendations on how to configure the nw settings on az vm's. (F)
+
+24. your company has an azure subsciption that contains resources in several regions.
+	you need to ensure that administrators can only create resources in those regions.
+	what should you use ? An Azure Policy (X)
+	
+25. you can add an ARM template to an azure blueprint (T)
+	you can assign an Azure blue print to a RG (F)
+	you can use azure blueprints to grant permissions to a resource (T)
+	
+26. Your company has an azure subscription that contains the following unused resources :
+		> 20 user accounts in azure ad
+		> five groups in azure ad
+		> 10 public IP addresses (X)
+		> 10 nw interfaces
+		
+	you need to reduce the cost for the company. which unused resources should you remove ?
+	
+27. You can enable JIT vm access by using " microsoft defender for cloud "
+
+28. What is used to grant permission to azure virtual desktop resources ? RBAC roles (X)
+	
+29. What additional resource is required by an azure vm ? A public IP addr (X) *
+
+30. your company hosts an accounting application named app1 that is used by all the customers of the company.
+	app1 has low usage during the first three wekks of each month and very high usage during the last week of each month.
+	which benfit of azure cloud services supports costs management for this type of usage pattern ?
+	Ans : elasicity.
+	
+31. If an azure vm has a status of stopped (deallocated), you will continue to pay for "storage".
+
+32. what should you use to evaluate whether your company's azure environment meets regulatory requirements ?
+	Ans : Microsoft defender for cloud
+	
+	
+	
