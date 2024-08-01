@@ -6,8 +6,45 @@ shell script:
 Introduction :
 ==============
 
+shebang : #!
+
+ex: #!/bin/bash, #!/bin/ksh
+
+Comment: comments are not executable. comments are added using '#'
+
+ex: # comment added
+
+ex:
+
+helloworld.sh
+-------------
+#!/bin/bash
+
+# printing hello world
+echo "Hello world!"
+
+execution:
+
+1. permissions : chmod +x helloworld.sh
+
+2. ./helloworld.sh
+
 Handling script arguments :
 ---------------------------
+wish.sh
+-------
+#!/bin/bash
+
+echo "Hello $1 $2 $3"
+
+
+Ex: ./wish.sh Ramu Swapna Aishwarya
+
+$0  --> wish.sh
+$1  --> Ramu
+$2  --> Swapna
+$3  --> Aishwarya
+
 
 1. $1,$2.... are used to refere 1st arg, 2nd arg ....etc
 2. $0 refers name of the current script
@@ -18,7 +55,7 @@ Handling script arguments :
 
 Example :
 
-#!.bin/bash
+#!/bin/bash
 
 echo "Hello $1 $2"
 
@@ -53,9 +90,9 @@ echo ${DATE:?message}
 DATE=$(date +%d-%m-%y)
 echo date is ${DATE:0:2}
 
-Reggular Expressions :
+Reggular Expressions :c
 ======================
--> grep, awk,sed etc are used for search patterns
+-> grep, cut, awk, sed etc are used for search patterns
 
 
 Variables :
@@ -127,8 +164,11 @@ fi
                            [ -s FILE ] --> if file exists and size greter than 0
                            [ -x FILE ] --> if file exists and it is executable
                            [ -w FILE ] --> if file exists and it is writable
+						   
 *** example to check month number with month name : 
 ================================================
+
+#!/bin/bash
 
 month_number=$1
 
@@ -200,7 +240,8 @@ or
 
 for mission in `cat mission-names.txt` --> $(cat mission-names.txt)
 do
-   command $mission
+   # command $mission
+   echo $mission
 done
 
 or
@@ -281,7 +322,6 @@ done
 
 Example 2:
 ----------
-
 while true
 do
   echo "1. Add"
