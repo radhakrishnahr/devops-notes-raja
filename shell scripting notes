@@ -227,6 +227,15 @@ fi
 LOOPS :
 =======
 
+Array, List, Set  ---> Group of elements
+ example: class=student1, student2, student3...
+ 
+ for student in student1 student2 .. student40; do
+   
+   total_marks=
+   
+DRY(don't repeat yourself) code and WET(write everything twice) code
+
 for:
 ----
 syntax:
@@ -238,7 +247,7 @@ done
 
 or
 
-for mission in `cat mission-names.txt` --> $(cat mission-names.txt)
+for mission in `cat mission-names.txt` --> $(cat mission-names.txt)   
 do
    # command $mission
    echo $mission
@@ -248,7 +257,7 @@ or
 
 for (( mission = 0 ; mision <= 100 ; mission++ ))
 do
-   command $mission
+   echo $mission
 done
 
 ==> execute a set commands multiple times
@@ -296,6 +305,29 @@ while loop :
 ==> Create infine loops
 ==> Menu driven programs
 
+Fibonacci series :
+==================
+
+0112358 13 21 ... --> fibonacci numbers
+
+#!/bin/bash
+x=0
+y=1
+i=2
+echo "fibonacci series up to 1000 terms"
+echo  "$x"
+echo  "$y"
+
+#  -lt stands for equal to
+while [ $i -lt 1000 ];
+do
+  i=$(expr $i + 1)
+  z=$(expr $x + $y)
+  echo "$z"
+  x=$y
+  y=$z
+done
+
 Real time example 1:
 --------------
 
@@ -322,6 +354,10 @@ done
 
 Example 2:
 ----------
+
+Break --> It stops iteration operation and come out from loop
+Continue --> It stops current iteration and continues next iteration.
+
 while true
 do
   echo "1. Add"
@@ -361,6 +397,18 @@ done
 
 case statement :
 ================
+
+case syntax :
+
+case VARIABLE in
+	1) statement1
+	;;
+	2) statement2
+	;;
+	.
+	.
+	.
+esac
 
 Example:
 --------
@@ -434,12 +482,15 @@ Exit codes :
 ============
 
 Exit code = 0 --> Sucess
-Exit code > 0 --> Failure
+Exit code > 1 (non-zero --> Failure
+
+1 --> file not found
+127 --> command not found
 
 ==> to see exit code : echo $?
 ==> It is best practice to use exit codes in our scripts.
 
-Functions : 
+Functions :  To avoid duplication of code or in order to write DRY code. We use functions.
 ===========
 
 Function defination :
